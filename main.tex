@@ -1,0 +1,49 @@
+% \documentclass[draft]{beamer}
+\documentclass{beamer}
+% \documentclass[24pt, a0papper, landscape]{tikzposter}
+
+\input{preambule}
+
+\begin{document}
+
+%  \addtobeamertemplate{block end}{}{\vspace*{2ex}} % White space under blocks
+% \addtobeamertemplate{block alerted end}{}{\vspace*{2ex}} % White space under highlighted (alert) blocks
+% 
+% \setlength{\belowcaptionskip}{2ex} % White space under figures
+% \setlength\belowdisplayshortskip{2ex} % White space under equations
+
+\begin{frame}[t]
+
+\begin{columns}[t] 
+
+  \begin{column}{\sepwid}\end{column}
+  
+  
+  \begin{column}{\oneprvni} 
+    \input{prvni-sloupec}
+  \end{column}
+
+
+  \separacnisloupec
+
+
+  \begin{column}{\twodruhy} 
+    \input{druhy-sloupec}
+  \end{column}
+
+  \separacnisloupec
+
+  \begin{column}{\threetreti} 
+    \input{treti-sloupec}
+  \end{column}
+  
+  \begin{column}{\sepwid}\end{column}
+  
+  \end{columns}
+  \textit{Comparison of SMODERP, MIKE-SHE, HEC-HMS, poster in HallA (A.90)}
+% \vspace{0.5ex}
+  \hfill {\tiny The latex template used to create this poster was made by Computational Physics and Biophysics Group, Jacobs University\\[-18pt] \hfill under the licence: CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)}
+  \end{frame} % End of the enclosing frame
+
+
+\end{document}

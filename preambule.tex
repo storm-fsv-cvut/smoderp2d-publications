@@ -1,0 +1,205 @@
+%
+%
+% velikost papiru
+% nazev posteru a autori
+% sirka hlavnich sloupcu
+%
+%
+
+
+
+\usepackage{beamerposter}
+
+% \setlength{\paperwidth}{130.0cm}
+% \setlength{\paperheight}{80.0cm}
+% \setlength{\textwidth}{128.0cm}
+% \setlength{\textheight}{78.0cm} 
+
+
+% \setlength{\paperwidth}{1500mm}
+% \setlength{\paperheight}{800mm}
+% \setlength{\textwidth}{1470mm}
+% \setlength{\textheight}{770mm} 
+
+
+% A0
+% 841 x 1189 mm
+\setlength{\paperwidth}{1189mm}
+\setlength{\paperheight}{841mm}
+\setlength{\textwidth}{1160mm}
+\setlength{\textheight}{810mm} 
+
+
+
+
+% \usepackage{fontspec}
+% +\newfontfamily\myfont[phv]{Helvetica}
+
+
+
+% \usepackage[scale=1.24]{beamerposter} 
+% \usepackage{caption}
+% \captionsetup{font=scriptsize,labelfont=scriptsize}
+\usepackage[utf8]{inputenc}
+
+% \usepackage[czech]{babel}
+\usepackage[english]{babel}   
+
+
+
+% \usepackage[font={small,it,rf}]{caption}
+\setbeamertemplate{caption}[numbered]{}
+% \usepackage{caption}
+% \captionsetup{font=scriptsize,labelfont=scriptsize}
+
+% \usepackage{caption}
+% 
+% 
+% \usepackage{subcaption}
+
+\usepackage{wrapfig}
+\usepackage{listings}
+
+
+\usepackage{multicol}
+% \usepackage[cp1250]{inputenc}
+% \usepackage[czech]{babel}
+\usepackage{natbib}
+% \bibliographystyle{agsm}
+\bibliographystyle{apalike}
+\usepackage{tabularx}
+
+
+
+\usepackage{ragged2e}
+
+
+
+\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+
+
+\usetheme{confposter}
+
+\setbeamercolor{block title}{fg=nblue,bg=white} % Colors of the block titles
+\setbeamercolor{block body}{fg=black,bg=white} % Colors of the body of blocks
+\setbeamercolor{block alerted title}{fg=white,bg=dblue!70} % Colors of the highlighted block titles
+\setbeamercolor{block alerted body}{fg=black,bg=dblue!10} % Colors of the body of highlighted blocks
+% Many more colors are available for use in beamerthemeconfposter.sty
+
+%-----------------------------------------------------------
+% Define the column widths and overall poster size
+% To set effective sepwid, onecolwid and twocolwid values, first choose how many columns you want and how much separation you want between columns
+% In this template, the separation width chosen is 0.024 of the paper width and a 4-column layout
+% onecolwid should therefore be (1-(# of columns+1)*sepwid)/# of columns e.g. (1-(4+1)*0.024)/4 = 0.22
+% Set twocolwid to be (2*onecolwid)+sepwid = 0.464
+% Set threecolwid to be (3*onecolwid)+2*sepwid = 0.708
+
+
+\newcommand{\separacnisloupec}{
+\begin{column}{0.02\linewidth}
+\centering
+\begin{beamercolorbox}[wd=0.25cm,dp=0.95\textheight]{cboxb}\end{beamercolorbox}
+\end{column}
+} % Empty spacer column
+
+
+\newcommand{\separacnisloupecc}{
+\begin{column}{0.02\linewidth}
+\centering
+\begin{beamercolorbox}[wd=0.125cm,dp=0.45\textheight]{cboxb}\end{beamercolorbox}
+\end{column}
+} % Empty spacer column
+
+
+
+\newlength{\sepwid}
+% 
+\newlength{\lcolwid}
+\newlength{\rcolwid}
+\newlength{\mezerapopisek}
+
+\newlength{\oneprvni}
+\newlength{\twodruhy}
+\newlength{\threetreti}
+
+
+\setlength{\sepwid}{0.02\paperwidth} % Separation width (white space) between columns
+\setlength{\oneprvni}{0.31\paperwidth} % Width of one column
+\setlength{\twodruhy}{0.31\paperwidth} % Width of two columns
+\setlength{\threetreti}{0.31\paperwidth} % Width of three columns
+
+
+
+
+\setlength{\lcolwid}{0.5438\paperwidth} % Width of left column
+\setlength{\rcolwid}{0.3361\paperwidth} % Width of right column
+
+\setlength{\mezerapopisek}{-9pt} % Width of right column
+%-----------------------------------------------------------
+
+
+\usepackage{graphicx}  % Required for including images
+
+\usepackage{booktabs} % Top and bottom rules for tables
+
+%----------------------------------------------------------------------------------------
+%       TITLE SECTION \usepackage[font=scriptsize]{caption}
+%----------------------------------------------------------------------------------------
+
+\title
+{
+Development of the surface runoff-erosion model SMODERP2D
+}
+
+\author{Petr Kavka (\href{mailto:petr.kavka@fsv.cvut.cz}{petr.kavka@fsv.cvut.cz}), {\bf \Large  Jakub Je\v{r}{\'a}bek}, Karel Vlas{\'a}k and David Zumr} % Author(s)
+
+\institute{Department of Irrigation, Drainage and Landscape Engineering, Faculty of Civil Engineering, Czech Technical University in Prague, Czech Republic } % Institution(s)
+
+%----------------------------------------------------------------------------------------
+
+
+
+
+\newcommand{\mojesekce}[1]{
+\section{asdfasdfa}
+\begin{center}
+\begin{beamercolorbox}[rounded = true, ht = 3ex, dp={0.5ex}]{myblocktitle2}
+ {\bf\large\rmfamily\thesection\hspace{1cm}#1}
+\end{beamercolorbox}
+\end{center}
+}
+
+\newcommand{\mojesekcee}[1]{
+\section{asdfasdfa}
+\begin{center}
+\begin{beamercolorbox}[rounded = true, ht = 6ex, dp={0.5ex}]{myblocktitle2}
+ {\bf\large\rmfamily\thesection\hspace{1cm}#1}
+\end{beamercolorbox}
+\end{center}
+}
+
+%  kvuli flow chart
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows}
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30]
+\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=1cm, minimum height=1cm, text centered, draw=black, fill=blue!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+\tikzstyle{decision} =  [diamond, minimum width=1cm, minimum height=1cm, text centered, text width=2cm, draw=black, fill=green!30, aspect=2]
+\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, text width=3cm, draw=black, fill=orange!30]
+\tikzstyle{guide} = [inner sep=0pt,minimum size=0mm]
+\tikzstyle{line} = [thick]
+
+
+
+
+
+\usepackage{color}
+
+\newcommand*{\mathcolor}{}
+\def\mathcolor#1#{\mathcoloraux{#1}}
+\newcommand*{\mathcoloraux}[3]{%
+  \protect\leavevmode
+  \begingroup
+    \color#1{#2}#3%
+  \endgroup
+}
