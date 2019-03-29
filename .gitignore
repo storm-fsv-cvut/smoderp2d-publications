@@ -1,0 +1,11 @@
+*.blg
+*.out
+*.aux
+*.bbl
+*.log
+*.nav
+*.pdf
+*.snm
+*.tex.backup
+*.toc
+*.bib.backup
