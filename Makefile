@@ -5,7 +5,7 @@ latexfile = main
 TEX = pdflatex
 BIB = bibtex
 
-all: 
+all: clean
 	$(TEX) $(latexfile)
 	$(BIB) $(latexfile)
 	$(TEX) $(latexfile)
