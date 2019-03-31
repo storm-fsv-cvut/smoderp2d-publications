@@ -1,7 +1,5 @@
 latexfile = main
 
-# TEX = pdflatex
-# xetext je kvuli fontu
 TEX = pdflatex
 BIB = bibtex
 
