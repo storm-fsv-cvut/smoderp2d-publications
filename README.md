@@ -1,2 +1,2 @@
-# poster_template
-vzor na poster v latexu, rozdelen na tri hlavni sloupce
+# poster for EGU 2019
+smoderp2d uncertainty and sensitivity analysis with introduction of QGIS plugin
