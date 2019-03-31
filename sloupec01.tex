@@ -55,9 +55,11 @@
         \frac{\partial h_{i}}{\partial t} =  es_{i} + \sum_j^n q_{j} - inf_{i} - q_{i} - ret_i
     $$
     where $h$ is water level [$L$], $es$ is effective precipitation [$L.T^{-1}$], $inf$ is infiltration [$L.T^{-1}$], $ret$ surface retention [$L$], and $q$ is the Manning-Strickler formula
-    $$
+    \begin{equation}
       q = Xi^Yh^b. 
-    $$
+      \label{eq:manning}
+    \end{equation}
+
     Parameters $X$, $Y$, and $b$ were inferred for each soil textural class. Variability of those parameters within and among textural classes is assessed in this poster. 
 \end{block}
 
@@ -67,52 +69,80 @@
 
 \subsection{Soil classes and ARE overview}
 \begin{block}{Soil classes and ARE overview}
+    \begin{itemize}
+        \item 266 experimets with artificial rainfall were performed 
+        \item Various slopes and rainfall intensities were tested for each location.
+    \end{itemize}
 
-\begin{columns}
-    \begin{column}{0.4\textwidth}
-        \includegraphics[width=1.1\textwidth]{obr/soil_triangle.png}
-    \end{column}
-    \begin{column}{0.6\textwidth}
-        \begin{table}[]
-        \begin{tabular}{lcccccc}
-        \hline
-        \hline
-        location      & year    & no. of            & \multicolumn{3}{c}{soil texture {[}\%{]}}  & soil class      \\
-                    &         & exper.       & clay  & silt  & sand &  \\
-        \hline
-        Horoměřice    & 2002    & 25                & 25             & 58            & 17            & silty loam      \\
-        Třebsín I     & 2004    & 22                & 5              & 60            & 35            & silty loam      \\
-        Neustupov     & 2006    & 14                & 4              & 41            & 55            & sandy loam      \\
-        Klapý         & 2007    & 25                & 30             & 54            & 16            & silty clay loam \\
-        Třebsín II    & 2008    & 28                & 5              & 60            & 35            & silty loam      \\
-        Třebešice I   & 2009    & 27                & 4              & 25            & 71            & sandy loam      \\
-        Třebešice II  & 2010    & 36                & 7              & 46            & 47            & sandy loam      \\
-        Nučice        & 2011    & 35                & 14             & 57            & 29            & silty loam      \\
-        Všetaty I     & 2012    & 24                & 22             & 42            & 36            & loam            \\
-        Všetaty II    & 2013    & 17                & 22             & 42            & 36            & loam            \\
-        Třebešice III & 2014    & 22                & 8              & 56            & 36            & silty loam      \\
-        Nové Strašecí & 2015    & 20                & 27             & 41            & 32            & loam            \\
-        Řisuty        & 2017    & 21                & 18             & 34            & 48            & loam           \\
-        \hline
-        \hline
-        \end{tabular}
-        \end{table}
-    \end{column}
-\end{columns}
-
-
+    \begin{columns}
+        \begin{column}{0.4\textwidth}
+            \includegraphics[width=1.05\textwidth]{obr/soil_triangle.png}
+        \end{column}
+        \begin{column}{0.6\textwidth}
+            {\small 
+            \begin{table}[]
+            \caption{ Overview of artificial rainfall experimets}
+                \begin{tabular}{lcccccc}
+                \hline
+                \hline
+                location      & year    & no. of            & \multicolumn{3}{c}{soil texture {[}\%{]}}  & soil class      \\
+                            &         & exper.       & clay  & silt  & sand &  \\
+                \hline
+                Horoměřice    & 2002    & 25                & 25             & 58            & 17            & silty loam      \\
+                Třebsín I     & 2004    & 22                & 5              & 60            & 35            & silty loam      \\
+                Neustupov     & 2006    & 14                & 4              & 41            & 55            & sandy loam      \\
+                Klapý         & 2007    & 25                & 30             & 54            & 16            & silty clay loam \\
+                Třebsín II    & 2008    & 28                & 5              & 60            & 35            & silty loam      \\
+                Třebešice I   & 2009    & 27                & 4              & 25            & 71            & sandy loam      \\
+                Třebešice II  & 2010    & 36                & 7              & 46            & 47            & sandy loam      \\
+                Nučice        & 2011    & 35                & 14             & 57            & 29            & silty loam      \\
+                Všetaty I     & 2012    & 24                & 22             & 42            & 36            & loam            \\
+                Všetaty II    & 2013    & 17                & 22             & 42            & 36            & loam            \\
+                Třebešice III & 2014    & 22                & 8              & 56            & 36            & silty loam      \\
+                Nové Strašecí & 2015    & 20                & 27             & 41            & 32            & loam            \\
+                Řisuty        & 2017    & 21                & 18             & 34            & 48            & loam           \\
+                \hline
+                \hline
+                \end{tabular}
+            \end{table}
+            }
+        \end{column}
+    \end{columns}
 \end{block}
 
 
 \subsection{Modeling exercises}
 \begin{block}{Modeling exercises}
-Sensitivity analyses\\
-Model optimization\\
-Uncertainty analyses - monte carlo
-
-
+    \begin{columns}[t]
+        \begin{column}{0.3\textwidth}
+            {\bf Model optimization}
+            \begin{itemize}
+                \item infiltration parameters fitted with data
+                \item differential evolution were used
+                \item eq. \ref{eq:manning} parameters were optimized
+                \item each experiment was optimized separately
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.3\textwidth}
+            {\bf Sensitivity analyses:}
+            \begin{itemize}
+                \item screening: each parameter changed with factor and compared to optimized set of parameters 
+                \item sum of squares for comparison
+                \item sensitivity of eq. \ref{eq:manning} and infiltration parameters were tested
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.3\textwidth}
+            {\bf Uncertainty analyses}
+            \begin{itemize}
+                \item 10000 Monte Carlo simulations for each experiment
+                \item random sampling in the parameter space
+                \item Nash Sutcliffe model efficiency for model run comparison
+            \end{itemize}
+        \end{column}
+    \end{columns}
+    Functionalities of python package Scipy were used to perform optimization \cite{scipy}. GNU Parallel software was used during optimization and Monte Carlo simulations \cite{Tange2011a}. 
 \end{block}
-% \end{block}
+
 
 
 
