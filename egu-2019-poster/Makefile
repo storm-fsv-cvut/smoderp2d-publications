@@ -13,4 +13,5 @@ all: clean
 view :
 	okular $(latexfile).pdf &
 clean: 
-	rm -f  *.dvi *.bbl *.blg *.aux *.log *.spl *.out *.toc 
+	rm -f  *.dvi *.bbl *.blg *.aux *.log *.spl *.out *.toc *.nav *.snm
+
