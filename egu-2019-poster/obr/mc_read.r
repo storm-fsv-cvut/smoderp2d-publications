@@ -1,12 +1,10 @@
 setwd("~/ownCloud/Knihovna/poster/EGU2019_smod/egu-2019-poster/obr")
-dir_ = '/home/hdd/data/16_smod_paper_optim/vysledky/sens_out.1.mc/'
+dir_ = '/home/hdd/data/16_smod_paper_optim/vysledky/sens_out.2/'
 scenare = list.dirs(dir_,recursive = FALSE,full.names = FALSE)
 scenare = scenare[grep(pattern = 'out-sens*', x = scenare)]
 #
-# save ?
-save_ = TRUE
+save_ = FALSE
 #
-
 
 prehled = read.table('/home/hdd/data/16_smod_paper_optim/vysledky/LabD_prehled_simulaci.csv',sep = ';', header = TRUE, comment.char = '*', na.strings = 'na')
 
@@ -44,11 +42,11 @@ read_mc <- function(scenare){
     MC_D[[jm_scenar]]$class = get_texture(jm_scenar)
     MC_D[[jm_scenar]]$textura = get_ClSiSa(jm_scenar)
     
-    # fn= paste(dir_,isc_sens,'monte_carlo_sa.dat',sep = '/')
-    # 
-    # # monte carlo data
-    # mc_d = read.table(fn,header = TRUE, sep=';', comment.char = '*')
-    # MC_D[[jm_scenar]]$mc_par = mc_d
+    fn= paste(dir_,isc_sens,'monte_carlo_sa.dat',sep = '/')
+    
+    # monte carlo data
+    mc_d = read.table(fn,header = TRUE, sep=';', comment.char = '*')
+    MC_D[[jm_scenar]]$mc_par = mc_d
     
     # pokud byly lepsi scenare tak jsou v ls_dirs
     ls_dirs = list.dirs(paste(dir_,isc_sens,sep = '/'), recursive = TRUE)
@@ -76,12 +74,15 @@ vybere_good_fit_params <- function(MC_D){
   for (iloc in 1:N){
     print (JM[iloc])
     loc = MC_D[[iloc]]
-    n_good_fit = length(loc$good_fit)
-    for (i in 1:n_good_fit){
-      loc_ = c(loc_,JM[iloc])
-      pars = rbind(pars,loc$good_fit[[i]]$para)
-      cl = c(cl,loc$class)
-      te = rbind(te,loc$textura)
+    n = length(loc$mc_par[,1])
+    for (i in 1:n){
+      ns = loc$mc_par[i,]$NashSutcliffe
+      if (ns>0){
+        cl = c(cl,loc$class)
+        te = rbind(te,loc$textura)
+        loc_ = c(loc_,JM[iloc])
+        pars = rbind(pars,loc$mc_par[i,])
+      }
     }
   }
   d = as.data.frame(te)
@@ -91,8 +92,9 @@ vybere_good_fit_params <- function(MC_D){
   return(d)
 }
 
-# MC_D  = read_mc(scenare)
-
+MC_D  = read_mc(scenare)
 mc_agg = vybere_good_fit_params(MC_D)
 
 if (save_) {save(MC_D, mc_agg, file = 'mc.rda')}
+
+
