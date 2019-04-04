@@ -9,6 +9,29 @@
 %     \end{column}
 % \end{columns}
 
+%   \begin{wrapfigure}[8]{r}{0.4\textwidth}
+%     \begin{minipage}{\dimexpr\linewidth-2\fboxrule-2\fboxsep}
+%     {\tiny
+%     \begin{lstlisting}
+%        @ @ @   @       @     @ @     @ @ @     @ @ @ @  @ @ @    @ @ @
+%       @        @ @   @ @   @     @   @     @   @        @     @  @     @
+%       @        @   @   @  @       @  @      @  @        @     @  @     @
+%         @ @    @       @  @       @  @      @  @ @ @    @ @ @    @ @ @
+%             @  @       @  @       @  @      @  @        @   @    @
+%             @  @       @   @     @   @     @   @        @    @   @
+%        @ @ @   @       @     @ @     @ @ @     @ @ @ @  @     @  @
+% 
+%       \  \  /   / /    \   \  /   \  /    /     /        @ @ @   @ @ @
+%        \ _\/   /_/      \   \/     \/    /_____/        @     @  @     @
+%            \__/          \  /      _\___/                     @  @      @
+%                \____      \/      /                          @   @      @
+%                     \_____/______/                         @     @      @
+%                                  \                       @       @     @
+%                                   \____________________ @ @ @ @  @ @ @
+%     \end{lstlisting}
+%     }
+%     \end{minipage}
+%   \end{wrapfigure}
 %----------------------------------------------------------------------------------------
 %   Summary
 %----------------------------------------------------------------------------------------
@@ -16,31 +39,19 @@
 
 
 \begin{alertblock}{Summary}
-  \begin{wrapfigure}[8]{r}{0.4\textwidth}
-    \begin{minipage}{\dimexpr\linewidth-2\fboxrule-2\fboxsep}
-    {\tiny
-    \begin{lstlisting}
-       @ @ @   @       @     @ @     @ @ @     @ @ @ @  @ @ @    @ @ @
-      @        @ @   @ @   @     @   @     @   @        @     @  @     @
-      @        @   @   @  @       @  @      @  @        @     @  @     @
-        @ @    @       @  @       @  @      @  @ @ @    @ @ @    @ @ @
-            @  @       @  @       @  @      @  @        @   @    @
-            @  @       @   @     @   @     @   @        @    @   @
-       @ @ @   @       @     @ @     @ @ @     @ @ @ @  @     @  @
-
-      \  \  /   / /    \   \  /   \  /    /     /        @ @ @   @ @ @
-       \ _\/   /_/      \   \/     \/    /_____/        @     @  @     @
-           \__/          \  /      _\___/                     @  @      @
-               \____      \/      /                          @   @      @
-                    \_____/______/                         @     @      @
-                                 \                       @       @     @
-                                  \____________________ @ @ @ @  @ @ @
-    \end{lstlisting}
+    {\large
+    \begin{itemize}
+        \item Parameters of surface runoff model were derived for each soil texture (past work)
+        \item Newly the parameters were derived with optimization on extended set of data
+        \item Sensitivity analysis were performed 
+        \item Uncertainly of parameters were assessed with Monte Carlo simulations 
+        \item New open source model provider is presented 
+    %       \item
+    %       \item
+    \end{itemize}
     }
-    \end{minipage}
-  \end{wrapfigure}
-  In the past parameters of the phy\-sically-based, distributed, event runoff/erosion SMODERP2D Model were inferred for each soil textural class. This approach were performed to simplify practitioners life since the parameters were ready to use if one have the soil texture of the area of interest. In order to assess variability of each parameter within and across textural classes the model were optimized to laboratory artificial rainfall experiments at 4 different textural classes. 
-  Results shows that ...
+%     In the past parameters of the phy\-sically-based, distributed, event runoff/erosion SMODERP2D Model were inferred for each soil textural class. This approach were performed to simplify practitioners life since the parameters were ready to use if one have the soil texture of the area of interest. In order to assess variability of each parameter within and across textural classes the model were optimized to laboratory artificial rainfall experiments at 4 different textural classes. 
+%     Results shows that ...
 \end{alertblock}\vspace{0.9cm}
 
 
@@ -50,8 +61,8 @@
 %----------------------------------------------------------------------------------------
 
 
-\mojesekce{Introduction and Methods}
-\subsection{gov}
+\mojesekce{Material and Methods}
+\subsection{Model structure}
 \begin{block}{Model structure}
     Based on a balance equation 
     $$
@@ -69,24 +80,30 @@
       \label{eq:manning}
     \end{equation}
 
-    {\bf Parameters $X$, $Y$, and $b$ were inferred for each soil textural class}. Variability of those parameters within and among textural classes is assessed in this poster. 
+    {\bf Parameters $X$, $Y$, and $b$ were inferred for each soil textural class.} Variability of those parameters within and among textural classes is assessed in this poster. Infiltration is solved with Phillip's infiltration equation:
+    \begin{equation}
+      inf = 1/2St^{-1/2} + Ks.
+      \label{eq:Phillips}
+    \end{equation}
+    {\bf Saturated hydraulic conductivity $Ks$ [$m/s$] and sorptivity $S$ [$m/\sqrt t $] were fitted with measured data.}
 \end{block}
 
 
 
 \subsection{Actual parameter values}
-\begin{block}{Actual parameter values}
+\begin{block}{Actual parameter values}\vspace{-1cm}
 \begin{columns}
     \begin{column}{0.25\textwidth}
-        Actual paramter values were inferred based on @@@PETR
+        Actual paramter values were inferred based on @@@(petr s referenci)
     \end{column}
     \begin{column}{0.75\textwidth}
         \begin{table}[]
             \small
+            \caption{Current parameter set for soil textural classes}
             \begin{tabular}{lllll|lllll}
             \hline
             \hline
-            Textural class & ID  & b    & x    & y     & Textural class  & ID   & b    & x    & y     \\
+            Textural class & ID  & $b$    & $X$    & $Y$     & Textural class  & ID   & $b$    & $X$    & $Y$  \\
             \hline
             sand           & SS  & 1.82 & 8.81 & 0.366 & sandy clay loam & SCL  & 1.7  & 10.7 & 0.603 \\
             loamy sand     & LS  & 1.82 & 8.81 & 0.366 & clay loam       & CL   & 1.7  & 10.7 & 0.603 \\
@@ -108,16 +125,16 @@
     \begin{itemize}
         \item 266 experimets with artificial rainfall were performed 
         \item Various slopes and rainfall intensities were tested for each location.
-    \end{itemize}
-
+    \end{itemize}\vspace{-1cm}
+% 
     \begin{columns}
         \begin{column}{0.4\textwidth}
-            \includegraphics[width=1.05\textwidth]{obr/soil_triangle.png}
+            \includegraphics[width=.95\textwidth]{obr/soil_triangle.png}
         \end{column}
         \begin{column}{0.6\textwidth}
             {\small 
             \begin{table}[]
-            \caption{ Overview of artificial rainfall experimets}
+            \caption{Overview of artificial rainfall experimets}
                 \begin{tabular}{lcccccc}
                 \hline
                 \hline
@@ -147,37 +164,37 @@
 \end{block}
 
 
-\subsection{Modeling exercises}
-\begin{block}{Modeling exercises}
-    \begin{columns}[t]
-        \begin{column}{0.3\textwidth}
-            {\bf Model optimization}
-            \begin{itemize}
-                \item infiltration parameters fitted with data
-                \item differential evolution were used
-                \item eq. \ref{eq:manning} parameters were optimized
-                \item each experiment was optimized separately
-            \end{itemize}
-        \end{column}
-        \begin{column}{0.3\textwidth}
-            {\bf Sensitivity analyses:}
-            \begin{itemize}
-                \item screening: each parameter changed with factor and compared to optimized set of parameters 
-                \item sum of squares for comparison
-                \item sensitivity of eq. \ref{eq:manning} and infiltration parameters were tested
-            \end{itemize}
-        \end{column}
-        \begin{column}{0.3\textwidth}
-            {\bf Uncertainty analyses}
-            \begin{itemize}
-                \item 10000 Monte Carlo simulations for each experiment
-                \item random sampling in the parameter space
-                \item Nash Sutcliffe model efficiency for model run comparison
-            \end{itemize}
-        \end{column}
-    \end{columns}
-    Functionalities of python package Scipy were used to perform optimization \citep{scipy}. GNU Parallel software was used during optimization and Monte Carlo simulations \citep{Tange2011a}. 
-\end{block}
+% \subsection{Modeling exercises}
+% \begin{block}{Modeling exercises}
+%     \begin{columns}[t]
+%         \begin{column}{0.3\textwidth}
+%             {\bf Model optimization}
+%             \begin{itemize}
+%                 \item infiltration parameters fitted with data
+%                 \item differential evolution were used
+%                 \item eq. \ref{eq:manning} parameters were optimized
+%                 \item each experiment was optimized separately
+%             \end{itemize}
+%         \end{column}
+%         \begin{column}{0.3\textwidth}
+%             {\bf Sensitivity analyses:}
+%             \begin{itemize}
+%                 \item screening: each parameter changed with factor and compared to optimized set of parameters 
+%                 \item sum of squares for comparison
+%                 \item sensitivity of eq. \ref{eq:manning} and infiltration parameters were tested
+%             \end{itemize}
+%         \end{column}
+%         \begin{column}{0.3\textwidth}
+%             {\bf Uncertainty analyses}
+%             \begin{itemize}
+%                 \item 10000 Monte Carlo simulations for each experiment
+%                 \item random sampling in the parameter space
+%                 \item Nash Sutcliffe model efficiency for model run comparison
+%             \end{itemize}
+%         \end{column}
+%     \end{columns}
+%     Functionalities of python package Scipy were used to perform optimization \citep{scipy}. GNU Parallel software was used during optimization and Monte Carlo simulations \citep{Tange2011a}. 
+% \end{block}
 
 
 
