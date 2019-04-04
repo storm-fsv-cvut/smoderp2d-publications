@@ -1,2 +1,4 @@
-# poster for EGU 2019
-smoderp2d uncertainty and sensitivity analysis with introduction of QGIS plugin
+# SMODERP2D publications
+publication related to the SMODERP2D project
+- egu-2019-poster: poster to EGU General Assembly 2019 [abstract](https://meetingorganizer.copernicus.org/EGU2019/EGU2019-13921.pdf)
+
