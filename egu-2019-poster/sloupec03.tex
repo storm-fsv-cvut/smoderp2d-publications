@@ -7,21 +7,19 @@
 \mojesekce{Open source GIS-based implementation}
 
 \justifying
-{\rmfamily The SMODERP2D model belongs to a family of so called GIS
-(Geographic Information System) based hydrological models utilizing
-capabilities of GIS software for geodata preprocessing. Originally the
-model could run only in proprietary Esri ArcGIS platform
-(\url{http://desktop.arcgis.com}). SMODERP2D project is currently
-entering the open source world. The new generation of the model
-presented by this contribution comes with support of two widely used
-open source GIS platforms:
+{\rmfamily The SMODERP2D model belongs to a family of so called
+GIS-based hydrological models utilizing capabilities of GIS software
+for geodata preprocessing. This part is performed by so-called {\em
+GIS providers}. Currently there are two GIS providers implemented.
 
 \begin{itemize}
-\item GRASS GIS (\url{http://grass.osgeo.org}) and
-\item QGIS (\url{http://qgis.org}).
+\item originally only proprietary Esri ArcGIS platform (\url{http://desktop.arcgis.com}) supported
+\item new generation comes with a provider suited for open source GRASS GIS platform 
 \end{itemize}
 }
 
+\subsection{GRASS GIS}
+\begin{block}{GRASS GIS}
 \begin{columns}
     \begin{column}{0.5\textwidth}
     \centering
@@ -30,44 +28,51 @@ open source GIS platforms:
     \begin{column}{0.5\textwidth}
     \includegraphics[width = .07\textwidth]{obr/grass-logo.png}
     \justifying
-    {\rmfamily
+    {\rmfamily {\small
     {\em GRASS} (Geographic Resources Analysis Support System) {\em
     GIS} is a free and open source GIS software suite used for
     geospatial data management and analysis, image processing, spatial
-    modeling, and visualization.
+    modeling, and visualization. \newline (\url{http://grass.osgeo.org})}
 
     \vskip 0.5em
+
+    \begin{itemize}
+
+    \item GRASS-based GIS provider for data preprocessing integrated
+    into SMODERP2D codebase
     
-    Data preprocessing part is performed in SMODERP2D by so-called
-    {\em GIS providers}. Currently there are two GIS providers
-    implemented. First is based on widely used Esri proprietary
-    platform, the second runs on open source GRASS GIS platform. Model
-    computation including data preprocessing part can be performed in
-    GRASS GIS by newly developed {\tt r.smoderp2d} GRASS Addons module.
-    
+    \item {\tt r.smoderp2d} GRASS Addons module for performing
+    model computation including data preprocessing
+
+    \end{itemize}
     }
     \end{column}
 \end{columns}
-
-\vskip 1em
-
+\end{block}
+\subsection{QGIS}
+\begin{block}{QGIS}
 \begin{columns}
     \begin{column}{0.5\textwidth}
     \includegraphics[width = .07\textwidth]{obr/qgis-logo.png}    
     \justifying
-    {\rmfamily
+    {\rmfamily {\small
     QGIS is a widely known free and open source cross-platform desktop
-    geographic information system (GIS) application.
+    geographic information system (GIS) application.}
 
     \vskip 0.5em
 
-    Presented QGIS plugin designed by SMODERP2D development team
-    brings the model into QGIS environment while data preprocessing
-    part is performed by integrated GRASS-based GIS provider.  Due to
-    widely used QGIS platform, a newly developed QGIS plugin
-    significantly increases accessibility of the SMODERP2D model for
-    research purposes and also for engineering practice.
+    \begin{itemize}
+    
+    \item A new QGIS plugin brings the model into QGIS environment
+    while data preprocessing part is performed by integrated
+    GRASS-based GIS provider
+    
+    \item QGIS plugin significantly increases accessibility of the
+    SMODERP2D model for research purposes and also for engineering
+    practice
 
+    \end{itemize}
+    
     }
 
     \end{column}
@@ -76,6 +81,7 @@ open source GIS platforms:
     \includegraphics[width = .9\textwidth]{obr/qgis.png}
     \end{column}
 \end{columns}
+\end{block}
 
 \mojesekce{Conclusions \& Results}
 
@@ -93,5 +99,7 @@ Conc
 \subsection{asdf}
 \begin{block}{References}
 \small{
+SMODERP2D source code is licensed under GNU
+GPL (\url{https://github.com/storm-fsv-cvut/smoderp2d})
 \bibliography{lit}\vspace{0.4cm}}
 \end{block}
