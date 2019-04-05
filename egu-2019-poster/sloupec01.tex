@@ -43,8 +43,8 @@
     \begin{itemize}
         \item Parameters of surface runoff model were derived for each soil texture (past work)
         \item Newly the parameters were derived with optimization on extended set of data
-        \item Sensitivity analysis were performed 
-        \item Uncertainly of parameters were assessed with Monte Carlo simulations 
+% %         \item  were performed 
+        \item Sensitivity analysis and Monte Carlo model uncertainly assessment were performed
         \item New open source model GIS (Geographic Information
           System) provider is presented
     %       \item
@@ -63,13 +63,17 @@
 
 
 \mojesekce{Material and Methods}
+\justifying
+{\rmfamily
+Presented work has been done within a framework on a SMODEPR2D runoff/erosion model which is being developed at the CTU in Prague.
+}
 \subsection{Model structure}
 \begin{block}{Model structure}
     Based on a balance equation 
-    $$
+    $
         \frac{Storage}{\Delta t} = \nonumber  
         Inflow - Outflow
-    $$
+    $
     is inferred bucket model with kinematic wave approach for momentum 
     $$
 %       \begin{split}
@@ -81,7 +85,7 @@
       \label{eq:manning}
     \end{equation}
 
-    {\bf Parameters $X$, $Y$, and $b$ were inferred for each soil textural class.} Variability of those parameters within and among textural classes is assessed in this poster. Infiltration is solved with Phillip's infiltration equation:
+    {\bf Parameters $X$ [$T^{-1}$], $Y$ [$-$], and $b$ [$-$] were inferred for each soil textural class.} Variability of those parameters within and among textural classes is assessed in this poster. Infiltration is solved with Phillip's infiltration equation:
     \begin{equation}
       inf = 1/2St^{-1/2} + Ks.
       \label{eq:Phillips}
