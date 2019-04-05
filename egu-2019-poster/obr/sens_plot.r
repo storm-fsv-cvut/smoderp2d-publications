@@ -11,7 +11,7 @@ png_ = TRUE
 if (png_) {png('sens.png',width = width_,height = height_,res = res_, pointsize = pointsize_)}
 par(mar = c(3,3,1,1))
 boxplot(sens, log = 'y',lwd=2)
-mtext('log10(sum of squeares [m/s]^2)', line = 2, side = 2)
-mtext('scenario with incresed or deceased parameter', line = 2, side = 1)
+mtext(expression(paste('log'['10']," (cm min"^"-1",")",sep="")),side = 2, line = 1.8)
+mtext('scenarios with incresed or deceased parameter', line = 2, side = 1)
 abline(h=0)
 if (png_) {dev.off()}
