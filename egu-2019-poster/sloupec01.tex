@@ -1,52 +1,10 @@
-% \begin{columns}
-%     \begin{column}{0.5\textwidth}
-%     
-%     \end{column}
-% \end{columns}
-% \begin{columns}
-%     \begin{column}{0.5\textwidth}
-%     
-%     \end{column}
-% \end{columns}
-
-%   \begin{wrapfigure}[8]{r}{0.4\textwidth}
-%     \begin{minipage}{\dimexpr\linewidth-2\fboxrule-2\fboxsep}
-%     {\tiny
-%     \begin{lstlisting}
-%        @ @ @   @       @     @ @     @ @ @     @ @ @ @  @ @ @    @ @ @
-%       @        @ @   @ @   @     @   @     @   @        @     @  @     @
-%       @        @   @   @  @       @  @      @  @        @     @  @     @
-%         @ @    @       @  @       @  @      @  @ @ @    @ @ @    @ @ @
-%             @  @       @  @       @  @      @  @        @   @    @
-%             @  @       @   @     @   @     @   @        @    @   @
-%        @ @ @   @       @     @ @     @ @ @     @ @ @ @  @     @  @
-% 
-%       \  \  /   / /    \   \  /   \  /    /     /        @ @ @   @ @ @
-%        \ _\/   /_/      \   \/     \/    /_____/        @     @  @     @
-%            \__/          \  /      _\___/                     @  @      @
-%                \____      \/      /                          @   @      @
-%                     \_____/______/                         @     @      @
-%                                  \                       @       @     @
-%                                   \____________________ @ @ @ @  @ @ @
-%     \end{lstlisting}
-%     }
-%     \end{minipage}
-%   \end{wrapfigure}
-%----------------------------------------------------------------------------------------
-%   Summary
-%----------------------------------------------------------------------------------------
-
-
-
 \begin{alertblock}{Summary}
     {\large
     \begin{itemize}
         \item Parameters of surface runoff model were derived for each soil texture (past work)
         \item Newly the parameters were derived with optimization on extended set of data
-% %         \item  were performed 
         \item Sensitivity analysis and Monte Carlo model uncertainly assessment were performed
-        \item New open source model GIS (Geographic Information
-          System) provider is presented
+        \item New open source model GIS (Geographic Information System) provider is presented
     %       \item
     %       \item
     \end{itemize}
@@ -87,10 +45,10 @@ Presented work has been done within a framework on a SMODEPR2D runoff/erosion mo
 
     {\bf Parameters $X$ [$T^{-1}$], $Y$ [$-$], and $b$ [$-$] were inferred for each soil textural class.} Variability of those parameters within and among textural classes is assessed in this poster. Infiltration is solved with Phillip's infiltration equation:
     \begin{equation}
-      inf = 1/2St^{-1/2} + Ks.
+      inf = 1/2St^{-1/2} + Ks,
       \label{eq:Phillips}
     \end{equation}
-    {\bf Saturated hydraulic conductivity $Ks$ [$L.T^{-1}$] and sorptivity $S$ [$L.T^{-1/2}$] were fitted with measured data.}
+    {\bf where saturated hydraulic conductivity $Ks$ [$L.T^{-1}$] and sorptivity $S$ [$L.T^{-1/2}$] were fitted with measured data.}
 \end{block}
 
 
@@ -127,11 +85,11 @@ Presented work has been done within a framework on a SMODEPR2D runoff/erosion mo
     
 \end{block}
 
-\subsection{Soil classes and ARE overview}
-\begin{block}{Soil classes and ARE overview}
+\subsection{Soil classes and experiments}
+\begin{block}{Soil classes and experiments}
     \begin{itemize}
         \item 266 experiments with artificial rainfall were performed 
-        \item Various slopes and rainfall intensities were tested for each location.
+        \item Various slopes and rainfall intensities were tested for each location
     \end{itemize}\vspace{-0.25cm}
 
     \begin{columns}

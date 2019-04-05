@@ -7,10 +7,10 @@
 \begin{columns}
         \begin{column}{0.25\textwidth}
             \begin{itemize}
-                \item Sensitivity of eq. \ref{eq:manning} and infiltration parameters were tested
-                \item Each parameter changed with factor and compared to optimized set of parameters 
+                \item Sensitivity of model parameters 
+                \item Each parameter changed with a factor and compared to optimized parameter set
                 \item Sum of squares (SS) for comparison
-                \item Parameter specific factor increase SS by ca. order of magnitude
+                \item Parameter specific factor increases SS by ca. order of magnitude
             \end{itemize}
         \end{column}
     \begin{column}{0.25\textwidth}
@@ -50,8 +50,8 @@ Functionalities of python package Scipy were used to perform optimization \citep
     \begin{column}{0.2\textwidth}
             \begin{itemize}
                 \item Infiltration parameters fitted with data
-                \item Eq. \ref{eq:manning} parameters were optimized
-                \item Differential evolution were used for optimization
+                \item Eq. \ref{eq:manning} parameters were optimized with differential evolution
+                \item Effect of textural class and soil fraction to each parameter was tested
                 \item Each experiment was optimized separately
             \end{itemize}
             {\it Parameter margins for optimization}
@@ -95,6 +95,7 @@ Functionalities of python package Scipy were used to perform optimization \citep
             \item Random sampling in the parameter space
             \item Nash Sutcliffe model efficiency (NS) for model run comparison
             \item NS greater than one accepted
+            \item Among and inter textural class variation is displayed
         \end{itemize}
         GNU Parallel software was used during optimization and Monte Carlo simulations \citep{Tange2011a}. 
         \end{column}
