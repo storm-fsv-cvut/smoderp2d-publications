@@ -1,0 +1,73 @@
+\subsection{SMODERP2D model}
+The SMODERP2D model has a simple structure based on mass balance equation:
+\begin{equation}\label{equ:mass_bal}
+    \frac{Storage}{\Delta t} = \nonumber  
+    Inflow - Outflow
+\end{equation}
+In the equation~(\ref{equ:mass_bal}) the Storage is represented by surface water level which $h$ [$L$] which changes each proceeding time during the computation. 
+
+The $Inflow$ and $Outflow$ term on the right hand side of equation~(\ref{equ:mass_bal}) consist of several components and it is defines for each $i_th$ cell in the computation domain:
+\begin{equation}\label{equ:inflow}
+    Inflow_i = es_{i} + \sum_j^n q_{j}
+\end{equation}
+\begin{equation}\label{equ:outflow}
+    Outflow_i = inf_{i} - q_{i} - ret_i
+\end{equation}
+\begin{tabbing} 
+where \hspace{0.6cm} \= $es$ = effective precipitation\\
+\> $q$ = inflow to resp. outflow from a give raster cell\\
+\> $inf$ = infiltration\\
+\> $ret$ = surface retention for a given cell
+\end{tabbing}
+The sum $\sum_j^n$ indicates that there can be more that one cell flowing in cell i. The flow direction and therefore the sum $\sum_j^n$ is controlled be $D8$ flow direction algorithm. 
+Effective precipitation $es$ is a potential precipitation reduced by interception of the rainfall water on the vegetation. 
+
+The model is forced to satisfy the Courant–Friedrichs–Lewiho (CFL) criteria:
+\begin{equation}\label{equ:CFL}
+    CFL = \frac{q\textrm{d}t}{\textrm{d}x} < 1.0
+\end{equation}
+\begin{tabbing} 
+where \hspace{0.6cm} \= $\textrm{d}t$ = time step\\
+\> $\textrm{d}x$ = grid cell size
+\end{tabbing}
+If the flow $q$ in the cell highs the model is forced to decrease the time step in order to satisfy the CFL criteria, since grid cell size is fixed. 
+
+The flow $q$ in equation~(\ref{equ:inflow}) and~(\ref{equ:outflow}) has to components. Slower and spatially extensive sheet sheet flow $q_{sh}$:
+\begin{equation}\label{equ:sheetflow}
+    q_{sh} = XI^Yh^b
+\end{equation}
+\begin{tabbing} 
+where \hspace{0.6cm} \= $X,Y,b$ = empirical parameters\\
+\> $I$ = surface slope
+\end{tabbing}
+and faster concentrated rill flow $q_{rl}$ calculated by Mannings formula:
+\begin{equation}\label{equ:rillflow}
+    q_{rl} = A\frac{1}{n} R^{2/3} I^{1/2}
+\end{equation}
+\begin{tabbing} 
+where \hspace{0.6cm} \= $A$ = cross-section area\\
+\> $n$ = roughness in the rill\\
+\> $R$ = hydraulic radii
+\end{tabbing}
+Resulting flow is a sum of sheet and rill flow:
+\begin{equation}\label{equ:flow}
+    q = q_{rl} + q_{rl}
+\end{equation}
+
+Infiltration is solved with Phillip's infiltration equation:
+\begin{equation}\label{eq:Phillips}
+    inf = 1/2St^{-1/2} + Ks
+\end{equation}
+\begin{tabbing} 
+where \hspace{0.6cm} \= $S$ = sorptivity\\
+\> $K_s$ = hydraulic conductivity
+\end{tabbing}
+
+The reason why the parallelization is considered is the flow in~(\ref{equ:flow}). Parameters of relations~(\ref{equ:sheetflow})~(\ref{equ:rillflow}) and (\ref{eq:Phillips}) may be spatially distributed. And the data are handled by ESRI ArcGIS, QGIS and GRASS GIS provider. 
+
+
+
+
+
+
+
