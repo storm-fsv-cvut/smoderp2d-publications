@@ -1,4 +1,4 @@
-# Publication related to the SMODERP2D project
+# Publications related to the SMODERP2D project
 
 [SMODERP2D](https://github.com/storm-fsv-cvut/smoderp2d)
 
