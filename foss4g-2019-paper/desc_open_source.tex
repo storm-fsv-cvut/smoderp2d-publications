@@ -8,9 +8,8 @@ in order to solve or at least to improve various critical issues of
 the project. This includes most importantly a computation stability
 and performance, better interoperability, and lack of
 documentation. Recently SMODERP2D source code has been published on
-GitHub (https://github.com/storm-fsv-cvut/smoderp2d) under GNU GPL
-licence in order to attract a wider audience, new developers and
-users.
+GitHub \cite{smoderp2d-github-2019} under GNU GPL licence in order to
+attract a wider audience, new developers and users.
 
 The model is implemented in Python programming language using the
 object-oriented paradigm. The original source code has been designed
@@ -43,7 +42,7 @@ responsible for the data preparation phase.
   \end{center}
 \end{figure}
 
-\subsubsection{GRASS GIS implementation:}
+\subsubsection{GRASS GIS implementation:}\label{sec:grass_provider}
 Importantly, the new SMODER2D version extends supported GIS providers
 by a GRASS-based provider. Introducing an open source GIS platform to
 SMODERP2D workflow is crucial from the perspective of
@@ -58,19 +57,19 @@ GRASS GIS is an open source project available under GNU GPL
 licence. GRASS v.to.points module \cite{v-to-points-2019} has been
 extended to extract from lines start or end nodes only. This
 functionality is used to determine the slope of a polyline stream
-feature to ensure that its direction will always be downside. Another
-improvement has been done in v.to.db GRASS module
-\cite{v-to-db-2019}. This tool allows uploading geometry-related
-information into the attribute table. Newly added option {\it next\_edge}
-allows adding information about next left and right edge. This feature
-is important for SMODERP2D in order to determine for each stream
-segment a previous segment.
+feature to ensure that its direction will always be downslope (see
+fig. \ref{fig:stream_next_edge}). Another improvement has been done in
+v.to.db GRASS module \cite{v-to-db-2019}. This tool allows uploading
+geometry-related information into the attribute table. Newly added
+option {\it next\_edge} allows adding information about next left and
+right edge. This feature is important for SMODERP2D in order to
+determine for each stream segment a previous segment.
 
 \begin{figure}[ht!]
   \begin{center}
     \includegraphics[width=0.6\columnwidth]{figures/stream_next_edge}
-    \caption{Stream segmentation procedure: direction downside}
-    \label{fig:uml_diagram}
+    \caption{Stream segmentation procedure: direction downslope}
+    \label{fig:stream_next_edge}
   \end{center}
 \end{figure}
 
@@ -88,7 +87,7 @@ usage. Importantly, such pickle files are platform independent.
 
 Command-line usage example:
 \begin{verbatim}
-r.smoderp2d.py elevation=w001001 soil=soil_map \
+r.smoderp2d elevation=w001001 soil=soil_map \
  soil_type=Novak vegetation=soil_map \
  vegetation_type=veg rainfall_file=rainfall.txt \
  points=points2 table_soil_vegetation=tab_sv \
@@ -106,12 +105,24 @@ r.smoderp2d.py elevation=w001001 soil=soil_map \
 \end{figure}
 
 \subsubsection{QGIS plugin:}
+Recently the SMODERP2D model has been integrated also into QGIS
+environment. QGIS\footnote{https://www.qgis.org} is a widely used open
+source GIS platform which can be easily extended by user-defined
+plugins. A SMODERP2D QGIS plugin (fig.~\ref{fig:smoderp2_qgis}) allows
+performing both data preparatation and model computation parts (see
+fig. \ref{fig:uml_diagram}) in QGIS native environment. Data
+preparation part is ensured by GRASS GIS provider as described in
+\ref{sec:grass_provider}. Note that QGIS installation normally comes
+with GRASS GIS included. It means that GRASS dependency is solved by
+QGIS installation itself. Experimental code of the plugin compatible
+with current long term release QGIS version 3.4 is available from
+project GitHub repository \cite{smoderp2d-github-2019}.
 
 \begin{figure}[ht!]
   \begin{center}
     \includegraphics[width=1.0\columnwidth]{figures/smoderp2d_qgis.png}
     \caption{SMODERP2D model implemented as QGIS plugin}
-    \label{fig:uml_diagram}
+    \label{fig:smoderp2_qgis}
   \end{center}
 \end{figure}
 
