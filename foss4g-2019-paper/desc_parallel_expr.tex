@@ -1,0 +1,56 @@
+\subsection{Parallel computing experiments}
+
+Because one of the most crucial points of SMODERP2D computations is
+the speed, an experimental branch allowing (both CPU and GPU-based)
+parallelised computations has been developed.
+
+The main step was to rewrite all loop-based computations into
+matrix-based mathematical operations. To keep matrices as so-called
+tensors and to perform all the operations, an open source python
+%% TODO: Ondra
+library TensorFlow developed by Google Brain Team was used \cite{}.
+
+Even though TensorFlow is most widely used for machine learning and
+its performance on basic mathematical operations is not always better
+than the one of NumPy, it had been preferred for its easy switch
+between CPU and GPU-based core (it depends only on the version of
+TensorFlow the user has installed, no needs for changes in code) and
+therefore support also for users without an access to machines with
+GPU. Another advantage of TensorFlow is its usage of so-called
+graphs. A graph is a representation of all operations in
+dataflow/workflow and its individual operations are automatically sent
+to multiple cores in a CPU or multiple threads in a GPU. These nodes
+are run independently in parallel.
+
+To support further development of TensorFlow and exploit its bleeding
+edge functionalities, TensorFlow 2.0, which is published currently
+just as an alpha version, was used in the SMODERP2D experimental
+branch. Because TensorFlow 2.0 is still not suitable with all the
+Python acrobatic tricks, NumPy was used for matrix operations in
+places where TensorFlow could not (on places where loops were still
+needed; looping through a NumPy array is incomparably faster than
+through a Tensor).
+
+This experimental SMODERP2D branch is still under development;
+however, the alpha-version is ready to be used. The following table
+presents the results of different tests made on this version:
+
+%% TODO: Ondra
+TODO
+
+\begin{table}[h]
+	\centering
+		\begin{tabular}{|l|c|c|}\hline
+			Setting&\multicolumn{2}{c|}{A4 size paper}\\\hline
+			  &mm&inches\\
+			 Top&25&1.0\\
+			 Bottom&25&1.0\\
+			 Left&20&0.8\\
+			 Right&20&0.8\\
+			 Column Width&82&3.2\\
+			 Column Spacing&6&0.25\\\hline
+		\end{tabular}
+	\caption{Margin settings for A4 size paper}
+\label{tab:Margin_settings}
+\end{table}
+

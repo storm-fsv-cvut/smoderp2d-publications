@@ -1,7 +1,8 @@
 FILE=smoderp2d_foss4g_2019
 
 default:
-	pdflatex $(FILE).tex
+	pdflatex $(FILE)
+	bibtex $(FILE)
 
 clean:
 	rm -f *.log *.aux *~
