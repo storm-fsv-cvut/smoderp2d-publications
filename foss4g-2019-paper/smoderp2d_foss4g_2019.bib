@@ -136,6 +136,71 @@ DOI = {10.3390/ijgi2010201}
 	Howpublished = {https://github.com/storm-fsv-cvut/smoderp2d (2 June 2019)},
 	Title = {{SMODERP2D GitHub repository}},
 	Year = {2019}}
+	
+	
+	
+@article{Vivoni2011,
+abstract = {A major challenge in the use of fully-distributed hydrologic models has been the lack of computational capabilities for high-resolution, long-term simulations in large river basins. In this study, we present the parallel model implementation and real-world hydrologic assessment of the Triangulated Irregular Network (TIN)-based Real-time Integrated Basin Simulator (tRIBS). Our parallelization approach is based on the decomposition of a complex watershed using the channel network as a directed graph. The resulting sub-basin partitioning divides effort among processors and handles hydrologic exchanges across boundaries. Through numerical experiments in a set of nested basins, we quantify parallel performance relative to serial runs for a range of processors, simulation complexities and lengths, and sub-basin partitioning methods, while accounting for inter-run variability on a parallel computing system. In contrast to serial simulations, the parallel model speed-up depends on the variability of hydrologic processes. Load balancing significantly improves parallel speed-up with proportionally faster runs as simulation complexity (domain resolution and channel network extent) increases. The best strategy for large river basins is to combine a balanced partitioning with an extended channel network, with potential savings through a lower TIN resolution. Based on these advances, a wider range of applications for fully-distributed hydrologic models are now possible. This is illustrated through a set of ensemble forecasts that account for precipitation uncertainty derived from a statistical downscaling model. {\textcopyright} 2011 Elsevier B.V.},
+author = {Vivoni, Enrique R. and Mascaro, Giuseppe and Mniszewski, Susan and Fasel, Patricia and Springer, Everett P. and Ivanov, Valeriy Y. and Bras, Rafael L.},
+doi = {10.1016/j.jhydrol.2011.08.053},
+file = {:home/hdd/jakub/ownCloud/Knihovna/parallelmodeling/1-s2.0-S0022169411006093-main.pdf:pdf},
+issn = {00221694},
+journal = {Journal of Hydrology},
+keywords = {Ensemble forecasting,Parallel computing,Rainfall-runoff processes,Sub-basin partitioning,Watershed model},
+mendeley-groups = {model parallel (is GPU)},
+number = {1-2},
+pages = {483--496},
+publisher = {Elsevier B.V.},
+title = {{Real-world hydrologic assessment of a fully-distributed hydrological model in a parallel computing environment}},
+url = {http://dx.doi.org/10.1016/j.jhydrol.2011.08.053},
+volume = {409},
+year = {2011}
+}
+
+@article{Le2015,
+abstract = {The widespread availability of high-resolution lidar data provides an opportunity to capture micro-topographic control on the partitioning and transport of water for incorporation in coupled surface - sub-surface flow modeling. However, large-scale simulations of integrated flow at the lidar data resolution are computationally expensive due to the density of the computational grid and the iterative nature of the algorithms for solving nonlinearity. Here we present a distributed physically based integrated flow model that couples two-dimensional overland flow and three-dimensional variably saturated sub-surface flow on a GPU-based (Graphic Processing Unit) parallel computing architecture. Alternating Direction Implicit (ADI) scheme modified for GPU structure is used for numerical solutions in both models. Boundary condition switching approach is applied to partition potential water fluxes into actual fluxes for the coupling between surface and sub-surface models. The algorithms are verified using five benchmark problems that have been widely adopted in literature. This is followed by a large-scale simulation using lidar data. We demonstrate that the method is computationally efficient and produces physically consistent solutions. This computational efficiency suggests the feasibility of GPU computing for fully distributed, physics-based hydrologic models over large areas.},
+author = {Le, Phong V.V. and Kumar, Praveen and Valocchi, Albert J. and Dang, Hoang Vu},
+doi = {10.1016/j.envsoft.2015.07.015},
+file = {:home/jakub/Downloads/1-s2.0-S1364815215300207-main.pdf:pdf},
+issn = {13648152},
+journal = {Environmental Modelling and Software},
+keywords = {ADI scheme,Finite difference,GPU computation,Lidar,Surface - sub-surface interactions},
+mendeley-groups = {model parallel (is GPU)},
+pages = {1--13},
+publisher = {Elsevier Ltd},
+title = {{GPU-based high-performance computing for integrated surface-sub-surface flow modeling}},
+url = {http://dx.doi.org/10.1016/j.envsoft.2015.07.015},
+volume = {73},
+year = {2015}
+}
+
+a@article{Kalyanapu2011,
+abstract = {This paper presents a study of the computational enhancement of a Graphics Processing Unit (GPU) enabled 2D flood model. The objectives are to demonstrate the significant speedup of a new GPU-enabled full dynamic wave flood model and to present the effect of model spatial resolution on its speedup. A 2D dynamic flood model based on the shallow water equations is parallelized using the GPU approach developed in NVIDIA's Compute Unified Development Architecture (CUDA). The model is validated using observations of the Taum Sauk pump storage hydroelectric power plant dam break flood event. For the Taum Sauk flood simulation, the GPU model speedup compared to an identical CPU model implementation is 80×-88× for computational domains ranging from 65.5 k to 1.05 M cells. Thirty minutes of event time were simulated by the GPU model in 2 min, 15 times faster than real time. An important finding of the analysis of model domain size is the GPU model is not constrained by model domain extent as is the CPU model. Finally, the GPU implementation is shown to be scalable compared with the CPU version, an important characteristic for large domain flood modeling studies. {\textcopyright} 2011 Elsevier Ltd.},
+author = {Kalyanapu, Alfred J. and Shankar, Siddharth and Pardyjak, Eric R. and Judi, David R. and Burian, Steven J.},
+doi = {10.1016/j.envsoft.2011.02.014},
+file = {:home/jakub/Downloads/1-s2.0-S1364815211000582-main.pdf:pdf},
+issn = {13648152},
+journal = {Environmental Modelling and Software},
+keywords = {2D flood model,CUDA,Flood simulation,GPU programming},
+mendeley-groups = {model parallel (is GPU)},
+number = {8},
+pages = {1009--1016},
+publisher = {Elsevier Ltd},
+title = {{Assessment of GPU computational enhancement to a 2D flood model}},
+url = {http://dx.doi.org/10.1016/j.envsoft.2011.02.014},
+volume = {26},
+year = {2011}
+a}
+
+@article{Kalyanapu2011,
+	Author = {Kalyanapu, Alfred J. and Shankar, Siddharth and Pardyjak, Eric R. and Judi, David R. and Burian, Steven J.},
+	Journal = {Environmental Modelling and Software},
+	Pages = {1009--1016},
+	Title = {Assessment of GPU computational enhancement to a 2D flood model},
+	Volume = {26},
+	Number = {8},
+	Year = {2011}}
+
 
 %% EXAMPLES
 %% journal 
