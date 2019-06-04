@@ -21,19 +21,20 @@ classes defining computational steps were re-organized in a
 hierarchical manner. Major design-related changes have been done in
 Python classes responsible for data handling and preparation using GIS
 software tools. Data preparation workflow is handled by a
-newly-defined base, partly abstract Python class ({\tt BaseProvider},
-fig.~\ref{fig:uml_diagram}). Functionality depending on used GIS
-package has been separated into new classes. This step was crucial in
-order to make data preparation workflow GIS package independent. The
-only supported platform, Esri ArcGIS, has been separated from a base
-workflow. Based on that, a new concept of so-called “GIS providers”
-has been introduced, see fig. \ref{fig:uml_diagram}. The key point is
-the separation of GIS functionality related code from generic workflow
-defined by the base provider. The base provider depends only on
-standard builtin Python libraries. Array-like computation is performed
-by a well-known Numpy library. Using GIS provider prototypes, the
-SMODERP2D project can be easily extended to support another GIS
-packages responsible for the data preparation phase. 
+newly-defined base, partly abstract Python class ({\tt BaseProvider}
+in the Figure~\ref{fig:uml_diagram}). Functionality depending on used
+GIS package has been separated into new classes. This step was crucial
+in order to make data preparation workflow GIS package
+independent. The only supported platform, Esri ArcGIS, has been
+separated from a base workflow. Based on that, a new concept of
+so-called “GIS providers” has been introduced, see
+Figure \ref{fig:uml_diagram}. The key point is the separation of GIS
+functionality related code from generic workflow defined by the base
+provider. The base provider depends only on standard builtin Python
+libraries. Array-like computation is performed by a well-known Numpy
+library. Using GIS provider prototypes, the SMODERP2D project can be
+easily extended to support another GIS packages responsible for the
+data preparation phase.
 
 \begin{figure}[ht!]
   \begin{center}
@@ -80,14 +81,14 @@ upcomming GRASS GIS version 7.8.  GRASS v.to.points module
 \cite{v-to-points-2019} has been extended to extract from lines start
 or end nodes only. This functionality is used to determine the slope
 of a polyline stream feature to ensure that its direction will always
-be downslope (see fig. \ref{fig:stream_next_edge}). Another
+be downslope (see Figure~\ref{fig:stream_next_edge}). Another
 improvement has been done in v.to.db GRASS module
 \cite{v-to-db-2019}. This tool allows uploading geometry-related
 information into the attribute table. Newly added option {\it
   next\_edge} allows adding information about next left and right
 edge. This functionality is important for SMODERP2D in order to
-determine stream network connectivity, see
-fig. \ref{fig:stream_next_edge}.
+determine stream network connectivity as
+Figure~\ref{fig:stream_next_edge} shows.
 
 \begin{figure}[ht!]
   \begin{center}
@@ -100,7 +101,7 @@ fig. \ref{fig:stream_next_edge}.
 On the top of GRASS GIS provider a specialized GRASS {\em r.smoderp2d}
 module has been designed. This tool allows an user running SMODERP2D
 model computation directly from GRASS GIS working environment, see
-fig. \ref{fig:r.smoderp2d}. The module can be easily installed in
+Figure~\ref{fig:r.smoderp2d}. The module can be easily installed in
 GRASS GIS similarly to other extensions (so-called addons modules) by
 {\em g.extension} command. By default, the {\em r.smoderp2d} module
 performs data preparation phase followed by a model computation. Data
@@ -135,7 +136,7 @@ environment. QGIS\footnote{https://www.qgis.org} is a widely used open
 source GIS platform which can be easily extended by user-defined
 plugins. A SMODERP2D QGIS plugin allows performing both data
 preparatation and model computation phases in QGIS native environment,
-see fig.~\ref{fig:smoderp2_qgis}. Data preparation part is ensured by
+see Figure~\ref{fig:smoderp2_qgis}. Data preparation part is ensured by
 GRASS GIS provider as described in \ref{sec:grass_provider}. Note that
 QGIS installation normally comes with GRASS GIS included. It means
 that GRASS dependency is solved by QGIS installation
