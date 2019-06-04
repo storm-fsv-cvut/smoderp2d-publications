@@ -7,10 +7,10 @@ parallelised computations has been developed.
 The main step was to rewrite all loop-based computations into
 matrix-based mathematical operations. To keep matrices as so-called
 tensors and to perform all the operations, an open source Python
-%% TODO: Ondra
-library TensorFlow developed by Google Brain Team was used \cite{xxx}.
-Even though TensorFlow is most widely used for machine learning and
-its performance on basic mathematical operations is not always better
+library TensorFlow \cite{tensorflow2015-whitepaper} developed by Google Brain
+Team\footnote{https://ai.google/research/teams/brain/} was used. Even though
+TensorFlow is most widely used for machine learning
+and its performance on basic mathematical operations is not always better
 than the one of NumPy, it had been preferred for its easy switch
 between CPU and GPU-based core (it depends only on the version of
 TensorFlow the user has installed, no needs for changes in code) and
@@ -58,7 +58,7 @@ presents the results of different tests made on this version.
 \end{table}
 
 \subsubsection{Further ideas for a basins-based parallel computing}
-Besides the GPU-based parallelization (with TensorFlow \cite{xxx} or
+Besides the GPU-based parallelization (with TensorFlow \cite{tensorflow2015-whitepaper} or
 NVIDIA Cuda technology~\cite{Kalyanapu2011,Le2015}) the
 CPU-parallelization may also bring a good improvement in the computation
 time reduction. The computation domain is separated into sub-domains
