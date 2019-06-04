@@ -1,6 +1,6 @@
 Erosion / hydrological models (EH) are being used for various research or engineering purposes. 
 Results of such a model may be used as an input information for a planning 
-or designing soil conservation measures. 
+or designing soil conservation measures in the landscape and basins. 
 Volumes of runoff water and transported soil amounts
 or time series of runoff water are being calculated
 in order to design the protection measures sufficient for a given flood 
@@ -34,7 +34,7 @@ and may case sever soil and nutrition losses in the landscape.
 In the modeled system may be presented linear (water courses, streets, ditches) 
 or points (typically a water pump) features which affect the water 
 flow and soil transport routines. GIS software has tools 
-to operate with the linear or point features. 
+to operate with the linear or point features.
 
 
 The EH model may encounter with some run-time issues which 
@@ -58,20 +58,38 @@ is caused mainly by discrepancy between solution height
 (surface water) and cell size and surface roughness coefficient 
 or sharp surface slope changes between adjacent cells. 
 
-In case of EH models the commonly computed processes are sheet (water covers the earth's surface evenly)
-and rill flow (water detaches the soil material and concentrates its flow in the created rill). 
+In case of EH models the commonly computed processes are sheet 
+and 
+rill flow. 
+The sheet flow covers the earth's surface evenly, whereas rill flow detaches 
+the soil material and concentrates its flow in the created rill 
+(therefore it is also called concentrated flow).
 Although the concentrated rill flow is particularly fast (causing  
 the time step size constrain) it is usually not spatially extensive 
-over the watershed. The rill flow usually occurs at concentrated 
-flow paths. The computation may end up in a situation where a 
-small portion of the computation domain force shorter time step 
-(due to rill flow)  whereas the rest of the area allows a large one. 
-In that case only a small part of the computed watershed causes the long model run-time. 
+over the basin. 
+The computation may end up in a situation where a 
+small portion of the computed basin force shorter time step 
+(due to rill flow presence ) whereas the rest of the area allows larger time step. 
+In that case only a small part of the computed basin causes the long model run-time. 
 
+To summarize and outline the objectives of this manuscript. The advantage of high 
+resolution geodata availability is constrained with the increasing computation demands
+of the calculation. In the case of the manuscript the extremely 
+short time steps caused by the need of CFL criterion is the main concern. 
+Only o portion of processes calculated by the model causes the need for shorter time step and those 
+processes are, in the same time, spatially limited (the rill flow). In the other words, 
+the whole basin computation time is being increased die to small part
+of the computed basin. One way to overcome this problem is to use 
+GPU or CPU palatalization. In this manuscript testing of the TensorFlow Python library 
+\cite{tensorflow2015-whitepaper} were tested to parallelized the modeled process. 
+Besides the TensorFlow parallelization the CPU parallelization is outlined. 
+The optimalization were performed with the SMODERP2D EH model. The model calculated the surface runoff
+and soil loss processes with the use of GIS software for the data pre-/post-processing. 
+In the past the model was only capable running under the proprietary ESRI ArcGIS. 
+New version of QGIS and GRASS gis providers and some of the used principles are also presented in this paper. 
 
-Nevýhoda -  Výpočet je numericky náročný, kuli CFL
-Procesy jsou rychlé jen v některých buňkách, ostatní části “čekají”
-Jedním z přístupů je využití rozbusnosti výpočetní techniky. 
-TO je umožněno paralezlazcí výpočtu (CPU/GPU). Princip pravidelné mřížky -  nejsnazší, princip      subpovodí     
-
-Testování jak využít paralelizaci je testováno na modelu SMODERP..
+% Nevýhoda -  Výpočet je numericky náročný, kuli CFL
+% Procesy jsou rychlé jen v některých buňkách, ostatní části “čekají”
+% Jedním z přístupů je využití rozbusnosti výpočetní techniky. 
+% TO je umožněno paralezlazcí výpočtu (CPU/GPU). Princip pravidelné mřížky -  nejsnazší, princip      subpovodí     
+% Testování jak využít paralelizaci je testováno na modelu SMODERP..
