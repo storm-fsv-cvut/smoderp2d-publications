@@ -5,7 +5,24 @@ Empirical erosion models are often based on Universal Soil Loss Equation (USLE),
 Surface processes are spatially distributed, which is the reason why GIS is often depling in the modeling process taking advantage of ready to use GIS features EH models have similar structure (although each model is specific in terms in solved processes, its purpose or coding strategy). The forcing is precipitation which is often introduced in the model in spatially distributed manner. Majority of models contain an infiltration routine which parameters may be spatially distributed since grass land or parking lot may be presented in single hydrological model and have vastly distinct infiltration characteristic. Infiltrated water is transported to the soil with different transport properties. Ponging water creates overland flow which leads to a soil transport and may case sever soil and nutrition losses. In the modeled system may be presented linear (water courses, streets, ditches) or points (typically a water pump) features which affect the water flow and soil transport routines as well. 
 
 
-The EH model may encounter with some run-time issues which rise from model spatial and temporal discretization. It was noted in Molnar & Julien, (2000) that grid cell size is interchangeable in terms of spatial discretization if the model parameters were calibrated on the model with the same grid size. Data availability and larger computation resources lead more often to the use of finer spatial resolution. This may, in some cases, cause problems with time discretization which is commonly controlled with Courant–Friedrichs–Lewy (CFL) criterion. CFL criterion force the time step to be lower if velocity of flow process increases or the spatial discretization become finer. Maximum allowed value of CFL criterion theoretically equals one. For shallow surface processes (processes which take place in the used model) CFL should be even smaller than one, as it was noted in Zhang & Cundy (1989) or Esteves et al. (2000). The need for smaller time step is caused mainly by discrepancy between solution height (surface water) and cell size and surface roughness coefficient or sharp surface slope changes between adjacent cells. 
+The EH model may encounter with some run-time issues which 
+rise from model spatial and temporal discretization. 
+It was noted in \cite{molnar2000} that grid cell size is interchangeable 
+in terms of spatial discretization if the model parameters 
+were calibrated on the model with the same grid size. 
+Data availability and larger computation resources lead more often 
+to the use of finer spatial resolution. This may, in some 
+cases, cause problems with time discretization which is commonly 
+controlled with Courant–Friedrichs–Lewy (CFL) criterion. 
+CFL criterion force the time step to be lower if velocity of flow 
+process increases or the spatial discretization become finer. 
+Maximum allowed value of CFL criterion theoretically equals one. 
+For shallow surface processes (processes which take place in the used model) 
+CFL should be even smaller than one, as it was noted in \cite{zhang1989}
+or \cite{esteves2000}. The need for smaller time step 
+is caused mainly by discrepancy between solution height 
+(surface water) and cell size and surface roughness coefficient 
+or sharp surface slope changes between adjacent cells. 
 
 In case of EH models the commonly computed processes are sheet (water covers the earth's surface evenly) and rill flow (water detaches the soil material and concentrates its flow in the created rill). Although the concentrated rill flow is particularly fast (causing  the time step size constrain) it is usually not spatially extensive over the watershed. The rill flow usually occurs at concentrated flow paths. The computation may end up in a situation where a small portion of the computation domain force shorter time step (due to rill flow)  whereas the rest of the area allows a large one. In that case only a small part of the computed watershed causes the long model run-time. 
 
