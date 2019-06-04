@@ -56,17 +56,17 @@ TODO
 \subsubsection{Further ideas for a basins-based parallel computing}
 Besides the GPU-based parallelization (with TensorFlow \cite{xxx} or
 NVIDIA Cuda technology~\cite{Kalyanapu2011,Le2015}) the
-CPU-parallelization may also bring good improvement in the computation
-time reduction. The computation domain is separated into sub-domain
-based on certain algorithm were each sub-domain is loaded to single
-cpu core. The domain may be separated into sub-domain with equal area
+CPU-parallelization may also bring a good improvement in the computation
+time reduction. The computation domain is separated into sub-domains
+based on certain algorithm were each sub-domains is loaded to single
+CPU core. The domain may be separated into sub-domain with equal area
 based on a defined grid. It is beneficial to incorporate also
 hydrological behavior in the parallelization
 strategy. In~\cite{Vivoni2011} the basins was separated in sub-basins
-based on stream network. The sub-basins communicated with co called
-ghost sell with each other where the water flowed between
+based on stream network. The sub-basins communicated with so called
+ghost cell with each other where the water flowed between
 sub-basins. The strategy aimed to generate as less ghost cells as
-possible~\cite{Vivoni2011}.
+possible.
 
 The parallelization strategy outlined in the manuscript is based on
 the hydrological reality and it is depicted in a simplified setup in
