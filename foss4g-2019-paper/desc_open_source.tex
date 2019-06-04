@@ -13,34 +13,54 @@ attract a wider audience, new developers and users.
 
 The model is implemented in Python programming language using the
 object-oriented paradigm. The original source code has been designed
-with low level of scalability, limited readability and
-interoperability. Part of the computation phase responsible for data
+with a low level of a scalability, limited readability and
+interoperability. Part of the computation phase responsible for a data
 preparation was restricted to a single platform only, Esri ArcGIS. In
 2018 the original source code has been completely refactorized. Python
-classes defining computational steps were re-organized in hierarchical
-manner. Major design-related changes have been done in Python classes
-responsible for data handling and preparation using GIS software
-tools. Data preparation workflow is handled by a newly-defined base,
-partly abstract Python class. Functionality depending on used GIS
+classes defining computational steps were re-organized in a
+hierarchical manner. Major design-related changes have been done in
+Python classes responsible for data handling and preparation using GIS
+software tools. Data preparation workflow is handled by a
+newly-defined base, partly abstract Python class ({\tt BaseProvider},
+fig.~\ref{fig:uml_diagram}). Functionality depending on used GIS
 package has been separated into new classes. This step was crucial in
-order to make data preparation workflow GIS package
-independent. Currently, the only supported platform, Esri ArcGIS, has
-been separated from a base workflow. Based on that, a new concept of
-so-called “GIS providers” has been introduced. The key point is the
-separation of GIS package related code from generic workflow defined
-by the base provider. The base provider depends only on standard
-builtin Python libraries. Array-like computation is performed by a
-well-known Numpy library. Using GIS provider prototypes, the SMODERP2D
-project can be easily extended to support another GIS packages
-responsible for the data preparation phase.
+order to make data preparation workflow GIS package independent. The
+only supported platform, Esri ArcGIS, has been separated from a base
+workflow. Based on that, a new concept of so-called “GIS providers”
+has been introduced, see fig. \ref{fig:uml_diagram}. The key point is
+the separation of GIS functionality related code from generic workflow
+defined by the base provider. The base provider depends only on
+standard builtin Python libraries. Array-like computation is performed
+by a well-known Numpy library. Using GIS provider prototypes, the
+SMODERP2D project can be easily extended to support another GIS
+packages responsible for the data preparation phase. 
 
 \begin{figure}[ht!]
   \begin{center}
     \includegraphics[width=1.0\columnwidth]{figures/uml_diagram.pdf}
-    \caption{Data Preparation and Model Computation packages}
+    \caption{Concept of GIS providers}
     \label{fig:uml_diagram}
   \end{center}
 \end{figure}
+
+Currently the SMODERP2D project comes with three different GIS
+providers. Support for Esri ArcGIS platform is implemented by {\tt
+  ArcGISProvider}, GRASS GIS is handled by {\tt GrassGisProvider}, see
+\ref{sec:grass_provider}. The {\tt CmdProvider} is triggered only when
+model computation is run from a command-line. In this case it is
+assumed that data preparation phase has been already performed by one
+of supported GIS platforms.
+
+Example of running computation from a command-line. Option {\it
+  --typecomp roff} specifies that only model computation without data
+preparation phase is triggered. It means that data has been already
+prepared and stored in a pickle file distributed by {\it test.ini}
+configuration file.
+
+\begin{verbatim}
+./bin/start-smoderp2d.py --typecomp roff \
+ --indata tests/test.ini
+\end{verbatim}
 
 \subsubsection{GRASS GIS implementation:}\label{sec:grass_provider}
 Importantly, the new SMODER2D version extends supported GIS providers
