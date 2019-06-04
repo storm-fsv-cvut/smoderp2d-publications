@@ -31,26 +31,30 @@ needed; looping through a NumPy array is incomparably faster than
 through a Tensor).
 
 This experimental SMODERP2D branch is still under development;
-however, the alpha-version is ready to be used. The following table
-presents the results of different tests made on this version:
-
-%% TODO: Ondra
-TODO
+however, the alpha-version is ready to be used. Table \ref{tab:GPU_results}
+presents the results of different tests made on this version.
 
 \begin{table}[h]
   \centering
-  \begin{tabular}{|l|c|c|}\hline
-    Setting&\multicolumn{2}{c|}{A4 size paper}\\\hline
-    &mm&inches\\
-    Top&25&1.0\\
-    Bottom&25&1.0\\
-    Left&20&0.8\\
-    Right&20&0.8\\
-    Column Width&82&3.2\\
-    Column Spacing&6&0.25\\\hline
+  \caption{Results of parallelization tests}
+  \makegapedcells
+  \begin{tabular}{|l|p{2.2cm}|c|c|}\hline
+    RAM & Processing unit & Data 62 KB & Data 197 MB\\
+     & & [s] & [s]\\\hline
+    \multirow{2}{*}{15 GB} & GPU1 & 4.0 & 7 560\\
+    & CPU1 & 0.2 & 12 809\\\hline
+    \multirow{2}{*}{251 GB} & GPU2 & 2.5 & 8 631\\
+    & CPU2 & 0.2 & 10 637\\\hline
   \end{tabular}
-  \caption{Margin settings for A4 size paper}
-  \label{tab:Margin_settings}
+  \label{tab:GPU_results}
+  \caption{Used processing units}
+  \begin{tabular}{|l|p{1.9cm}|c|c|}\hline
+    ID & Model & Clock speed & Memory\\\hline
+    GPU1 & GeForce GTX 1060 3GB & 33 MHz & 3 016 MiB \\\hline
+    GPU2 & 4x GeForce GTX 1080 Ti & 33 MHz & 11 178 MiB \\\hline
+    CPU1 & AMD Ryzen 7 1700 Eight Core Processor & 1 373 MHz & 512 KB \\\hline
+    CPU2 & Intel Xeon CPU E5-2630 v4 @ 2.20 GHz & 2 423 MHz & 25 600 KB \\\hline
+  \end{tabular}
 \end{table}
 
 \subsubsection{Further ideas for a basins-based parallel computing}
