@@ -58,6 +58,15 @@ presents the results of different tests made on this version.
   \end{tabular}
 \end{table}
 
+As can be seen in the table, the usage of GPUs is not always the right way.
+The bottleneck of TensorFlow is its graph initialization; this step is very
+time-consuming and therefore can last many times longer than the computation
+itself for extremely small data. However, for data of common size and bigger
+the computation was generally faster (reaching around 60 percent of the total
+computation time on different architectures). Disappointing were results with
+multiple GPUs - the code is going to be modified to exploit these
+possibilities.
+
 \subsubsection{Further ideas for a basins-based parallel computing}
 Besides the GPU-based parallelization (with TensorFlow \cite{tensorflow2015-whitepaper} or
 NVIDIA Cuda technology~\cite{Kalyanapu2011,Le2015}) the
