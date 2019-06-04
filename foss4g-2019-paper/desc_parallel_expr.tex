@@ -54,9 +54,40 @@ TODO
 \end{table}
 
 \subsubsection{Further ideas for a basins-based parallel computing}
-Besides the GPU-based parallelization (with TensorFlow \cite{xxx} or NVIDIA Cuda technology~\cite{Kalyanapu2011,Le2015}) the CPU-parallelization may also bring good improvement in the computation time reduction. The computation domain is separated into sub-domain based on certain algorithm were each sub-domain is loaded to single cpu core. The domain may be separated into sub-domain with equal area based on a defined grid. It is beneficial to incorporate also hydrological behavior  in the parallelization strategy. In~\cite{Vivoni2011} the basins was separated in sub-basins based on stream network. The sub-basins communicated with co called ghost sell with each other where the water flowed between sub-basins. The strategy aimed to generate as less ghost cells as possible~\cite{Vivoni2011}.
+Besides the GPU-based parallelization (with TensorFlow \cite{xxx} or
+NVIDIA Cuda technology~\cite{Kalyanapu2011,Le2015}) the
+CPU-parallelization may also bring good improvement in the computation
+time reduction. The computation domain is separated into sub-domain
+based on certain algorithm were each sub-domain is loaded to single
+cpu core. The domain may be separated into sub-domain with equal area
+based on a defined grid. It is beneficial to incorporate also
+hydrological behavior in the parallelization
+strategy. In~\cite{Vivoni2011} the basins was separated in sub-basins
+based on stream network. The sub-basins communicated with co called
+ghost sell with each other where the water flowed between
+sub-basins. The strategy aimed to generate as less ghost cells as
+possible~\cite{Vivoni2011}.
 
-The parallelization strategy outlined in the manuscript is based on the hydrological reality and it is depicted in a simplified setup in the Figure~\ref{fig:cpu-parallel}. The strategy main goal is to reduce the communication CPU-cores during the computation as much as possible. The whole basin is divided into several sub-basins based on the digital elevation model. Outlet of each sub-basin is depicted with red dots in the Figure~\ref{fig:cpu-parallel}. After the sub-basins are defined an order in which to be computed is defined as follows. Sub-basins which are hydrologically the farthest from the basin outlet and therefore have no inflow flow upslope catchments are calculated at first. Those sub-basins have the rainfall recorded in hyetograph as the only input. In the simplified setup shown in the Figure~\ref{fig:cpu-parallel}, the sub-basins 1, 2, 3, and 6 are calculated at first in parallel. The calculated hydrographs of the sub-basins 1, 2, 3, and 4 are stored in the memory. Sub-basins which has an inflow from sub-basins 1, 2, 3, and 6 are calculated next. It this case it is only the sub-basin 4. In this case the water input in the calculation are, besides the hyetograph, also hydrographs of sub-basins 1 and 3 which flow in the basin 4. This the same manned are calculated sub-basins towards in the outlet. (to be finished).
+The parallelization strategy outlined in the manuscript is based on
+the hydrological reality and it is depicted in a simplified setup in
+the Figure~\ref{fig:cpu-parallel}. The strategy main goal is to reduce
+the communication CPU-cores during the computation as much as
+possible. The whole basin is divided into several sub-basins based on
+the digital elevation model. Outlet of each sub-basin is depicted with
+red dots in the Figure~\ref{fig:cpu-parallel}. After the sub-basins
+are defined an order in which to be computed is defined as
+follows. Sub-basins which are hydrologically the farthest from the
+basin outlet and therefore have no inflow flow upslope catchments are
+calculated at first. Those sub-basins have the rainfall recorded in
+hyetograph as the only input. In the simplified setup shown in the
+Figure~\ref{fig:cpu-parallel}, the sub-basins 1, 2, 3, and 6 are
+calculated at first in parallel. The calculated hydrographs of the
+sub-basins 1, 2, 3, and 4 are stored in the memory. Sub-basins which
+has an inflow from sub-basins 1, 2, 3, and 6 are calculated next. It
+this case it is only the sub-basin 4. In this case the water input in
+the calculation are, besides the hyetograph, also hydrographs of
+sub-basins 1 and 3 which flow in the basin 4. This the same manned are
+calculated sub-basins towards in the outlet. (to be finished).
 
 (add about possible advantages and disadvantages)
 
