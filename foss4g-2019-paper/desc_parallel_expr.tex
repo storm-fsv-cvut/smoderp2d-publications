@@ -33,7 +33,8 @@ through a Tensor).
 
 This experimental SMODERP2D branch is still under development;
 however, the alpha-version is ready to be used. Table \ref{tab:GPU_results}
-presents the results of different tests made on this version.
+presents the results of different tests made on this version
+(comparing parallelized GPU computation with a single CPU one).
 
 \begin{table}[h]
   \centering
@@ -58,7 +59,8 @@ presents the results of different tests made on this version.
   \end{tabular}
 \end{table}
 
-As can be seen in the table, the usage of GPUs is not always the right way.
+As can be seen in the table, the usage of GPUs is not always
+the~right way even when compared with a single CPU.
 The bottleneck of TensorFlow is its graph initialization; this step is very
 time-consuming and therefore can last many times longer than the computation
 itself for extremely small data. However, for data of common size and bigger
