@@ -67,24 +67,23 @@ computation time on different architectures). Disappointing were results with
 multiple GPUs - the code is going to be modified to exploit these
 possibilities.
 
-\subsubsection{Further ideas for a basins-based parallel computing}
+\subsubsection{Further ideas for a sub-basins based parallel computing}
 Besides the GPU-based parallelization (with TensorFlow \cite{tensorflow2015-whitepaper} or
 NVIDIA Cuda technology~\cite{Kalyanapu2011,Le2015}) the
-CPU-parallelization may also bring a good improvement in the computation
+pure CPU-parallelization may also bring a good improvement in the computation
 time reduction. The computation domain is separated into sub-domains
-based on certain algorithm were each sub-domain is loaded to single
-CPU core. The domain may be separated into sub-domain with equal area
-based on a defined grid. It is beneficial to incorporate also
+based on certain algorithm where each sub-domain computation is loaded to single
+CPU core.  It is beneficial to incorporate the
 hydrological behavior in the parallelization
 strategy if the domain is a hydrological basin. 
 In~\cite{Vivoni2011} the basin was separated in sub-basins
 based on stream network. The sub-basins communicated with each other through so called
 ghost cell. The strategy aimed to generate as less ghost cells as
-possible.
+possible; to reduce the communication between the CPU cores. 
 
 The parallelization strategy outlined in the manuscript is based on
-the hydrological reality and it is depicted in a simplified setup in
-the Figure~\ref{fig:cpu-parallel}. In this example an Nučice experimental 
+the hydrological reality and it is shown in a simplified setup in
+the Figure~\ref{fig:cpu-parallel}. In this example the Nu\v{c}ice experimental 
 was chosen to present the parallelization strategy. At this 0.5 km$^2$ large 
 basin a long tern monitoring of erosion and runoff processes is being conducted 
 by the Dept.\ of Landscape Water Conservation. 
@@ -93,32 +92,34 @@ The strategy main goal is reduction of
 the communication between CPU-cores during the computation as much as
 possible. The whole basin is divided into several sub-basins based on
 the digital elevation model and user defined sub-basin size. 
-Outlet of each sub-basin is depicted with
+Outlet\footnote{the location in the basin where all water from the basin flows} 
+of each sub-basin is depicted with
 red dots in the Figure~\ref{fig:cpu-parallel}. After the sub-basins
 are defined, an order in which each sub-basin will be computed is defined as
 follows. Sub-basins which are hydrologically the farthest from the
 basin outlet (depicted by triangle in Figure~\ref{fig:cpu-parallel}) 
-and therefore have no inflow flow upslope catchments are
+and therefore have no inflow flow upslope area are
 calculated at first. Those sub-basins have the rainfall stored in
-hyetographs the only input. In the simplified setup shown in the
+hyetographs as the only input. In the simplified setup shown in the
 Figure~\ref{fig:cpu-parallel}, the sub-basins 1, 2, 3, and 6 are
 calculated at first in parallel. The calculated hydrographs of the
-sub-basins 1, 2, 3, and 4 are stored in the memory for later. Sub-basins which
-has an inflow from sub-basins 1, 2, 3, and 6 are calculated next. It
-this case it is only the sub-basin 4. The water input in
-the calculation of sub-basin 6 are now hyetograph and also hydrographs of
-sub-basins 1 and 3. This the same manned are
-calculated sub-basins towards in the whole basin outlet where its hydrograph 
-is the desired outcome.
+sub-basins 1, 2, 3, and 6 are stored in the memory for the later use. 
+Sub-basins which
+have an inflow from sub-basins 1, 2, 3, and 6 are calculated next. It
+this case it is the only the sub-basin 4. The water input in
+the sub-basin 4 are now hyetograph and also hydrographs of
+sub-basins 1 and 3. In the same manned are
+calculated all sub-basins towards in the main basin outlet (red triangle in Figure~\ref{fig:cpu-parallel}) 
+where its hydrograph is the desired outcome.
 
-This approach may encounter in several limitations where the main one 
-originates in the basin geometry. In case of narrow  basin a situation 
-where each sub-basin has only one inflow and one outflow sub-basin may occur.
-In this case, the computation sub-basins will be computed in parallel, which
+This approach may encounter in several limitations. The main one 
+originates from the basin geometry. In case of narrow  basin a situation 
+where each sub-basin has a single upslope and downslope sub-basin may occur.
+In this case, the sub-basins will be computed in sequence, which
 lose the advantage of multi-core working station. If this situation happens
 the user will be forced to create very small sub-basins in order to be able 
 to performed the outlined CPU-parallelization. The possibilities of CPU-parallelization
-outlined in this section will be the subject of further research.
+described in this section will be the subject of further research.
 
 
 \begin{figure}[ht!]
