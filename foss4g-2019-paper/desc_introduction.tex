@@ -1,5 +1,5 @@
 Erosion / hydrological models (EH) are being used for various research or engineering purposes. 
-Results of such models may be used as an input information for a planning 
+Results of such models may be used as input information for planning 
 or designing soil conservation measures in the landscape and hydrological units - basins. 
 Runoff water volume and transported soil amounts
 or discharge time series are being calculated
@@ -13,30 +13,30 @@ are being used to proof a new theory or to test hypotheses related
 to mechanism controlling the runoff and soil transport.
 
 Empirical erosion models are often based on Universal Soil Loss Equation (USLE), 
-\cite{wischmeier1978,renard1997} and empirical hydrological models on Curve 
+\cite{wischmeier1978,renard1997} and empirical hydrological models on the Curve 
 number method (CN) \cite{cronshey1986}, concepts more than 30 years old. 
 Using empirical approaches may introduce limitations in the protection measures design e.g. 
-because mentioned models do not take into account transient nature of modeled processes. 
+because mentioned models do not take into account the transient nature of modelled processes. 
 Physically based models are being developed to overcome the empirical models limitations. 
 
-Processes taking place in landscape are spatially distributed, which is the reason why GIS 
-is often deploying in the modeling process taking advantage 
+Processes taking place in a landscape are spatially distributed, which is the reason why GIS 
+is often deploying in the modelling process taking advantage 
 of ready to use GIS features. EH models have similar structure 
 (although each model is specific in terms in processes solved, 
 its purpose or coding strategy). The forcing of the runoff and soil loss is precipitation
 which is often introduced in the model in spatially distributed 
 manner. Majority of models include an infiltration routine with 
-spatially distributed parameters, since grass land 
-and parking lot may be presented in single hydrological model 
+spatially distributed parameters, since grassland 
+and parking lot may be presented in a single hydrological model 
 and have vastly distinct infiltration characteristic. Infiltrated 
 water is transported to the soil which has varying transport properties. 
-Ponging water creates overland flow which leads to a soil transport 
-and may cause sever soil and nutrition losses in the landscape. 
+Ponging water creates overland flow which leads to soil transport 
+and may cause severe soil and nutrition losses in the landscape. 
 Linear (water courses, streets, ditches) 
 or points (typically a water pump) features may be presented  
-in the modeled system and affect the water flow or soil transport regime. 
+in the modelled system and affect the water flow or soil transport regime. 
 GIS software has tools to operate with the linear and point features, 
-and spatial data which simplifies modelers live.
+and spatial data which simplifies modellers live.
 
 The EH model may encounter with some run-time issues which 
 rise from model spatial and temporal discretization. 
@@ -56,32 +56,32 @@ For shallow surface processes (processes which take place in the used model)
 CFL criterion should 
 be even smaller than one as it was noted in \cite{zhang1989}
 or \cite{esteves2000}. The need for smaller than one CFL criterion 
-is caused mainly by discrepancy between solution (surface water height), 
+is caused mainly by the discrepancy between solution (surface water height), 
 cell size and surface roughness coefficient 
 or by sharp surface slope changes between adjacent cells. 
 
-In case of EH models the commonly computed processes are sheet 
+In case of EH models, the commonly computed processes are sheet 
 and 
 rill flow. 
 The sheet flow covers the earth's surface evenly, whereas rill flow detaches 
 the soil material and concentrates its flow in the created rill 
 (therefore it is also called concentrated flow).
 Although the concentrated rill flow is particularly fast (causing  
-the time step size constrain) it usually occupies a small portion of the area. 
+the time step size constraint) it usually occupies a small portion of the area. 
 The computation may end up in a situation where a 
-small portion of the computed area demands shorter time step 
+small portion of the computed area demands a shorter time step 
 (due to rill flow presence ) whereas the rest of the area allows larger time step. 
-In that case only a small part of the computed area with developed rills causes the long model run-time. 
+In that case, only a small part of the computed area with developed rills causes the long model run-time. 
 
-To summarize and outline the objectives of this manuscript. The advantage of high 
-resolution geodata availability is constrained with the increasing computation demands
-of the calculation. In the case of this manuscript the extremely 
+To summarize and outline the objectives of this manuscript. The advantage of high-resolution
+geodata availability is constrained with the increasing computation demands
+of the calculation. In the case of this manuscript, the extremely 
 short time steps caused by the needs of CFL criterion is the main concern. 
 Not all computed processes need shorter time step and processes which do are spatially limited (the concentrated flow in rill). 
 In other words, 
 the whole basin computation run-time is being increased due to small part
 of the computed basin. One way to overcome this problem is to use 
-GPU or CPU palatalization. In this manuscript TensorFlow Python library 
+GPU or CPU palatalization. In this manuscript, TensorFlow Python library 
 \cite{tensorflow2015-whitepaper} was tested to parallelize the EH model. 
 Besides the TensorFlow a CPU parallelization is outlined. 
 The testing was performed with the SMODERP2D EH model. The model calculates the surface runoff

@@ -4,13 +4,13 @@ The SMODERP2D model has a simple structure based on mass balance equation:
     \frac{Storage}{\Delta t} = \nonumber  
     Inflow - Outflow
 \end{equation}
-In the equation~(\ref{equ:mass_bal}) the Storage is represented by
+In equation~(\ref{equ:mass_bal}) the Storage is represented by
 surface water level which $h$ [$L$] which changes each proceeding time
 during the computation.
 
-The $Inflow$ and $Outflow$ term on the right hand side of
-equation~(\ref{equ:mass_bal}) consist of several components and it is
-defines for each $i_th$ cell in the computation domain:
+The $Inflow$ and $Outflow$ terms on the right-hand side of
+equation~(\ref{equ:mass_bal}) consist of several components and are
+defined for each $i_th$ cell in the computation domain:
 \begin{equation}\label{equ:inflow}
     Inflow_i = es_{i} + \sum_j^n q_{j}
 \end{equation}
@@ -26,7 +26,7 @@ where \hspace{0.6cm} \= $es$ = effective precipitation\\
 The sum $\sum_j^n$ indicates that there can be more that one cell
 flowing in cell i. The flow direction and therefore the sum $\sum_j^n$
 is controlled be $D8$ flow direction algorithm~\cite{ocallaghan1984}.  Effective
-precipitation $es$ is a potential precipitation reduced by
+precipitation $es$ is potential precipitation reduced by
 interception of the rainfall water on the vegetation.
 
 The model is forced to satisfy the Courant–Friedrichs–Lewy (CFL)
@@ -61,7 +61,7 @@ where \hspace{0.6cm} \= $A$ = cross-section area\\
 \> $n$ = roughness in the rill\\
 \> $R$ = hydraulic radii
 \end{tabbing}
-Resulting flow is a sum of sheet and rill flow:
+The resulting flow is a sum of sheet and rill flow:
 \begin{equation}\label{equ:flow}
     q = q_{rl} + q_{rl}
 \end{equation}
