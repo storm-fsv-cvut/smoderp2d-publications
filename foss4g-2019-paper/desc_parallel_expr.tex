@@ -34,7 +34,7 @@ through a Tensor).
 This experimental SMODERP2D branch is still under development;
 however, the alpha-version is ready to be used. Table \ref{tab:GPU_results}
 presents the results of different tests made on this version
-(comparing parallelized GPU computation with a single CPU one).
+(comparing parallelized GPU computation, parallelized CPU computation and a single CPU one).
 
 \begin{table}[h]
   \centering
@@ -43,31 +43,33 @@ presents the results of different tests made on this version
   \begin{tabular}{|l|p{2.2cm}|c|c|}\hline
     RAM & Processing unit & Data 62 KB & Data 197 MB\\
      & & [s] & [s]\\\hline
-    \multirow{2}{*}{15 GB} & GPU1 & 4.0 & 7 560\\
-    & CPU1 & 0.2 & 12 809\\\hline
-    \multirow{2}{*}{251 GB} & GPU2 & 2.5 & 6 631\\
-    & CPU2 & 0.2 & 10 637\\\hline
+    \multirow{3}{*}{15 GB} & GPU1 & 4.0 & 7 560\\
+    & CPU1 & 0.2 & 12 809\\
+    & CPU2 & 2.1 & 7 249\\\hline
+    \multirow{3}{*}{251 GB} & GPU2 & 2.5 & 6 611\\
+    & CPU3 & 0.2 & 10 637\\
+    & CPU4 & 1.5 & 8 631\\\hline
   \end{tabular}
   \label{tab:GPU_results}
   \caption{Used processing units}
   \begin{tabular}{|l|p{1.9cm}|c|c|}\hline
     ID & Model & Clock speed & Memory\\\hline
     GPU1 & GeForce GTX 1060 3GB & 33 MHz & 3 016 MiB \\\hline
-    GPU2 & 4x GeForce GTX 1080 Ti & 33 MHz & 11 178 MiB \\\hline
+    GPU2 & $4\times$ GeForce GTX 1080 Ti & 33 MHz & 11 178 MiB \\\hline
     CPU1 & AMD Ryzen 7 1700 Eight Core Processor & 1 373 MHz & 512 KB \\\hline
-    CPU2 & Intel Xeon CPU E5-2630 v4 @ 2.20 GHz & 2 423 MHz & 25 600 KB \\\hline
+    CPU2 & $16\times$ AMD Ryzen 7 1700 Eight Core Processor & 1 373 MHz & 512 KB \\\hline
+    CPU3 & Intel Xeon CPU E5-2630 v4 @ 2.20 GHz & 2 423 MHz & 25 600 KB \\\hline
+    CPU4 & $40\times$ Intel Xeon CPU E5-2630 v4 @ 2.20 GHz & 2 423 MHz & 25 600 KB \\\hline
   \end{tabular}
 \end{table}
 
 As can be seen in the table, the usage of GPUs is not always
-the~right way even when compared with a single CPU.
+the~right way even when compared with CPUs, both single and parallelized ones.
 The bottleneck of TensorFlow is its graph initialization; this step is very
 time-consuming and therefore can last many times longer than the computation
-itself for extremely small data. However, for data of common size and bigger
-the computation was generally faster (reaching around 60 per cent of the total
-computation time on different architectures). Disappointing were results with
-multiple GPUs - the code is going to be modified to exploit these
-possibilities.
+itself for extremely small data. Another bottleneck is the memory shift between RAM and GPU virtual memory which concludes into slower processes for weaker GPUs (compared with parallelized computations being run on CPUs). Generally, for data of common size
+was the process with parallelized computations faster (reaching around 60 per cent of the total
+computation time on different architectures). Interesting moment is slower run of much stronger $CPU4$ when compared with weaker $CPU2$; this behaviour has to be examined deeper. 
 
 \subsubsection{Further ideas for a sub-basins based parallel computing}
 Besides the GPU-based parallelization (with TensorFlow \cite{tensorflow2015-whitepaper} or
