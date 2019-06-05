@@ -25,14 +25,12 @@ where \hspace{0.6cm} \= $es$ = effective precipitation\\
 \end{tabbing}
 The sum $\sum_j^n$ indicates that there can be more that one cell
 flowing in cell i. The flow direction and therefore the sum $\sum_j^n$
-%% ML: pridat referenci, kde byl D8 poprve publikovan?
-is controlled be $D8$ flow direction algorithm.  Effective
+is controlled be $D8$ flow direction algorithm~\cite{ocallaghan1984}.  Effective
 precipitation $es$ is a potential precipitation reduced by
 interception of the rainfall water on the vegetation.
 
-%% ML: pridat referenci (?)
-The model is forced to satisfy the Courant–Friedrichs–Lewiho (CFL)
-criteria:
+The model is forced to satisfy the Courant–Friedrichs–Lewy (CFL)
+criteria~\cite{courant1928}:
 \begin{equation}\label{equ:CFL}
     CFL = \frac{q\textrm{d}t}{\textrm{d}x} < 1.0
 \end{equation}
@@ -68,8 +66,7 @@ Resulting flow is a sum of sheet and rill flow:
     q = q_{rl} + q_{rl}
 \end{equation}
 
-%% ML: pridat referenci (?)
-Infiltration is solved with Phillip's infiltration equation:
+Infiltration is solved with Phillip's infiltration equation \cite{philip1957theory}:
 \begin{equation}\label{eq:Phillips}
     inf = 1/2St^{-1/2} + Ks
 \end{equation}
