@@ -1,24 +1,25 @@
 Erosion / hydrological models (EH) are being used for various research or engineering purposes. 
-Results of such a model may be used as an input information for a planning 
-or designing soil conservation measures in the landscape and basins. 
-Volumes of runoff water and transported soil amounts
-or time series of runoff water are being calculated
+Results of such models may be used as an input information for a planning 
+or designing soil conservation measures in the landscape and hydrological units - basins. 
+Runoff water volume and transported soil amounts
+or discharge time series are being calculated
 in order to design the protection measures sufficient for a given flood 
 or soil transport event. Another example of a practical 
 application of EH models may be land-use change or build up areas development studies 
-and effect of those on water or soil transport. 
+or effect of those on water or soil transport regime. 
 Great use of EH models is also in extreme event 
-forecasting. For research purposes EH models 
-are being used to proof a new theory or to test a hypothesis of mechanisms controlling the runoff and erosion.
+forecasting. In research, EH models 
+are being used to proof a new theory or to test hypotheses related 
+to mechanism controlling the runoff and soil transport.
 
 Empirical erosion models are often based on Universal Soil Loss Equation (USLE), 
 \cite{wischmeier1978,renard1997} and empirical hydrological models on Curve 
 number method (CN) \cite{cronshey1986}, concepts more than 30 years old. 
-Using empirical approaches may introduce limitations in designing the protection measures e.g. 
-because those models does not take into account transient nature of those processes. 
+Using empirical approaches may introduce limitations in the protection measures design e.g. 
+because mentioned models do not take into account transient nature of modeled processes. 
 Physically based models are being developed to overcome the empirical models limitations. 
 
-Surface processes are spatially distributed, which is the reason why GIS 
+Processes taking place in landscape are spatially distributed, which is the reason why GIS 
 is often deploying in the modeling process taking advantage 
 of ready to use GIS features. EH models have similar structure 
 (although each model is specific in terms in processes solved, 
@@ -28,14 +29,14 @@ manner. Majority of models include an infiltration routine with
 spatially distributed parameters, since grass land 
 and parking lot may be presented in single hydrological model 
 and have vastly distinct infiltration characteristic. Infiltrated 
-water is transported to the soil with different transport properties. 
+water is transported to the soil which has varying transport properties. 
 Ponging water creates overland flow which leads to a soil transport 
-and may case sever soil and nutrition losses in the landscape. 
-In the modeled system may be presented linear (water courses, streets, ditches) 
-or points (typically a water pump) features which affect the water 
-flow and soil transport routines. GIS software has tools 
-to operate with the linear or point features.
-
+and may cause sever soil and nutrition losses in the landscape. 
+Linear (water courses, streets, ditches) 
+or points (typically a water pump) features may be presented  
+in the modeled system and affect the water flow or soil transport regime. 
+GIS software has tools to operate with the linear and point features, 
+and spatial data which simplifies modelers live.
 
 The EH model may encounter with some run-time issues which 
 rise from model spatial and temporal discretization. 
@@ -45,18 +46,19 @@ It was noted in \cite{molnar2000} that raster grid cell size is interchangeable
 in terms of spatial discretization if the model parameters 
 were calibrated on the model with the same raster grid size. 
 Finer spatial resolution, in some 
-cases, causes problems with time discretization. Time step size is commonly 
-controlled with Courant–Friedrichs–Lewy (CFL) criterion. 
+cases, causes problems with time discretization and the time step size. 
+Time step size is commonly 
+controlled with Courant–Friedrichs–Lewy (CFL) criterion~\cite{courant1928}. 
 CFL criterion force the time step to decrease if: a) velocity of flow 
-process increases or; b) the spatial discretization become finer. 
-Maximum acceptable CFL value, which preserve computation stability, theoretically equals one. 
+process increases or; b) the spatial discretization becomes finer. 
+Maximum acceptable CFL value, which preserves computation stability, theoretically equals one. 
 For shallow surface processes (processes which take place in the used model)
 CFL criterion should 
 be even smaller than one as it was noted in \cite{zhang1989}
-or \cite{esteves2000}. The need for smaller time step, to satisfy CFL criterion, 
-is caused mainly by discrepancy between solution height 
-(surface water) and cell size and surface roughness coefficient 
-or sharp surface slope changes between adjacent cells. 
+or \cite{esteves2000}. The need for smaller than one CFL criterion 
+is caused mainly by discrepancy between solution (surface water height), 
+cell size and surface roughness coefficient 
+or by sharp surface slope changes between adjacent cells. 
 
 In case of EH models the commonly computed processes are sheet 
 and 
@@ -65,28 +67,27 @@ The sheet flow covers the earth's surface evenly, whereas rill flow detaches
 the soil material and concentrates its flow in the created rill 
 (therefore it is also called concentrated flow).
 Although the concentrated rill flow is particularly fast (causing  
-the time step size constrain) it is usually not spatially extensive 
-over the basin. 
+the time step size constrain) it usually occupies a small portion of the area. 
 The computation may end up in a situation where a 
-small portion of the computed basin force shorter time step 
+small portion of the computed area demands shorter time step 
 (due to rill flow presence ) whereas the rest of the area allows larger time step. 
-In that case only a small part of the computed basin causes the long model run-time. 
+In that case only a small part of the computed area with developed rills causes the long model run-time. 
 
 To summarize and outline the objectives of this manuscript. The advantage of high 
 resolution geodata availability is constrained with the increasing computation demands
-of the calculation. In the case of the manuscript the extremely 
-short time steps caused by the need of CFL criterion is the main concern. 
-Only o portion of processes calculated by the model causes the need for shorter time step and those 
-processes are, in the same time, spatially limited (the rill flow). In the other words, 
-the whole basin computation time is being increased die to small part
+of the calculation. In the case of this manuscript the extremely 
+short time steps caused by the needs of CFL criterion is the main concern. 
+Not all computed processes need shorter time step and processes which do are spatially limited (the concentrated flow in rill). 
+In other words, 
+the whole basin computation run-time is being increased due to small part
 of the computed basin. One way to overcome this problem is to use 
-GPU or CPU palatalization. In this manuscript testing of the TensorFlow Python library 
-\cite{tensorflow2015-whitepaper} were tested to parallelized the modeled process. 
-Besides the TensorFlow parallelization the CPU parallelization is outlined. 
-The optimalization were performed with the SMODERP2D EH model. The model calculated the surface runoff
-and soil loss processes with the use of GIS software for the data pre-/post-processing. 
-In the past the model was only capable running under the proprietary ESRI ArcGIS. 
-New version of QGIS and GRASS gis providers and some of the used principles are also presented in this paper. 
+GPU or CPU palatalization. In this manuscript TensorFlow Python library 
+\cite{tensorflow2015-whitepaper} was tested to parallelize the EH model. 
+Besides the TensorFlow a CPU parallelization is outlined. 
+The testing was performed with the SMODERP2D EH model. The model calculates the surface runoff
+and soil loss processes with the use of GIS software for the data pre- and postprocessing. 
+GRASS GIS provider and QGIS plugin were lately implemented in the SMODERP2D project, next to the already existing ESRI ArcGIS plugin. 
+Those new features and some of the used principles used in the SMODERP2D model are also presented in this paper. 
 
 % Nevýhoda -  Výpočet je numericky náročný, kuli CFL
 % Procesy jsou rychlé jen v některých buňkách, ostatní části “čekají”
