@@ -1,7 +1,7 @@
 \subsection{SMODERP2D model}
 The SMODERP2D model has been integrated in open source 
 GIS packages and tested for the GPU/CPU parallelization
-with in presented work. The model, which is now capable of 2D
+within presented work. The model, which is now capable of 2D
 calculation, has been developed from the 1D profile version~\cite{Holy1984}. 
 Description of the model follows.
 
@@ -23,12 +23,12 @@ The $Inflow$ and $Outflow$ of $i_{th}$ raster cell are defined as:
     Outflow_i = inf_{i} - q_{i} - ret_i
 \end{equation}
 \begin{tabbing} 
-where \hspace{0.6cm} \= $es$ = effective precipitation [$LT^{-1}$]\\
-\> $q$ = inflow to resp. outflow from a given raster cell [$LT^{-1}$]\\
+where \hspace{0.1cm} \= $es$ = effective precipitation [$LT^{-1}$]\\
+\> $q$ = inflow to resp. outflow from a given cell [$LT^{-1}$]\\
 \> $inf$ = infiltration [$LT^{-1}$]\\
 \> $ret$ = surface retention for a given raster cell [$LT^{-1}$]
 \end{tabbing}
-The sum $\sum_j^n$ in expression~(\ref{equ:inflow}) represents sum of all inflows to the cell $i$. 
+The sum $\sum_j^n$ in the expression~(\ref{equ:inflow}) represents sum of all inflows to the cell $i$. 
 The flow direction and therefore the sum $\sum_j^n$
 is controlled by D8 flow direction algorithm~\cite{ocallaghan1984}.  Effective
 precipitation $es$ is potential precipitation reduced by
@@ -91,7 +91,7 @@ where \hspace{0.6cm} \= $S$ = sorptivity [$LT^{1/2}$]\\
 \end{tabbing}
 
 Parameters of relations~(\ref{equ:sheetflow})~(\ref{equ:rillflow}) and
-(\ref{eq:Phillips}) are in most cases spatially distributed. It is 
+(\ref{eq:Phillips}) are in the most cases spatially distributed. It is 
 therefore beneficial to incorporate GIS packages in the modeling process. 
 
 
