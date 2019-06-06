@@ -1,20 +1,29 @@
-This manuscript presents SMODERP2D project and recently triggered 
-development. Complete SMODERP2D source code is available on GitHub 
-\cite{xxx} under GNU GPL licence. SMODERP2D computational tools have 
-been successfully integrated into Esri ArcGIS, GRASS GIS and QGIS desktop GIS platforms. On top of that, the concept of so-called GIS providers allows publishing the SMODERP2D model as web processing service. Establishing experimental SMODERP2D 
-OGC Web Processing Service is planned for 2019. Ongoing development 
-is mainly focused on computational routines and parallel computations experiments. All the tools are currently distributed as experimental and are available for testing and user feedback.
-The~official stable release of SMODERP2D model is planned in 2020. This 
-includes also user documentation which is currently under development. 
-In the 
-case of SMODERP2D model, the run-time is an issue, especially 
-if multiple mid-scale hydrological basins in fine spatial 
-resolution grid computation needs to be undertaken. The code parallelization
-is a common practice in cases where 
-the reduction of run-time is convenient or even necessary, therefore
-the existence of the TensorFlow-based branch; and although this branch is still
-under development, the reduction of the computation costs is already reaching up to 40 per
-cent depending on the data and architecture. This experiment also shows that the parallelized branch should not be used as the default one, but an ad hoc solution should be chosen depending on the data and available computing power. Even 
-though the SMODERP2D model does not belong in the family of forecasting 
-models (where the short run-time is necessary)  the run-time speed 
-up will increase the usability of the model in practice and research applications. 
+This manuscript presents SMODERP2D project and related recently
+triggered development. SMODERP2D computational tools have been
+successfully integrated into Esri ArcGIS, GRASS GIS and QGIS desktop
+GIS platforms. On top of that, the concept of so-called GIS providers
+has been introducted. Ongoing development is mainly focused on
+computational routines and parallel computations experiments. Also OGC
+Web Processing Service providing SMODERP2D functionality is planned to
+be established. All the tools are currently distributed as
+experimental ready for testing and user feedback. The~official stable
+release of SMODERP2D model is planned for 2020. This includes also
+user documentation which is currently under development.
+
+In the case of SMODERP2D model, the run-time is an issue, especially
+if multiple mid-scale hydrological basins in fine spatial resolution
+grid computation needs to be undertaken. The code parallelization is a
+common practice in cases where the reduction of run-time is convenient
+or even necessary, therefore the existence of the TensorFlow-based
+branch; and although this branch is still under development, the
+reduction of the computation costs is already reaching up to 40
+per cent depending on the data and architecture. This experiment also
+shows that the parallelized branch should not be used as the default
+one, but an ad hoc solution should be chosen depending on the data and
+available computing power. Even though the SMODERP2D model does not
+belong in the family of forecasting models (where the short run-time
+is necessary) the run-time speed up will increase the usability of the
+model in practice and research applications.
+
+SMODERP2D source code is available on GitHub
+\cite{smoderp2d-github-2019} under GNU GPL licence. 
