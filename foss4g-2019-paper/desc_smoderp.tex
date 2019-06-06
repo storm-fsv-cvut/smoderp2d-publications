@@ -1,16 +1,21 @@
 \subsection{SMODERP2D model}
-The SMODERP2D model has a simple structure based on the mass balance equation:
+The SMODERP2D model has been integrated in open source 
+GIS packages and tested for the GPU/CPU parallelization
+with in presented work. The model, which is now capable of 2D
+calculation, has been developed from the 1D profile version~\cite{Holy1984}. 
+Description of the model follows.
+
+The model has a simple structure based on the mass balance equation:
 \begin{equation}\label{equ:mass_bal}
     \frac{Storage}{\Delta t} = \nonumber  
     Inflow - Outflow
 \end{equation}
-In equation~(\ref{equ:mass_bal}) the Storage is represented by
+where {\it Storage} represents 
 surface water level $h$ [$L$] which changes each proceeding time
-during the computation.
-
-The $Inflow$ and $Outflow$ terms on the right-hand side of
-the equation~(\ref{equ:mass_bal}) consist of several components and are
-defined for each $i_th$ cell in the computation domain:
+during the computation. $Inflow$ and $Outflow$ terms on the right-hand side of
+the equation~(\ref{equ:mass_bal}) represent the water flowing in and out the storage 
+during the time step ${\Delta t}$ and consist of several components.
+The $Inflow$ and $Outflow$ of $i_{th}$ raster cell are defined as:
 \begin{equation}\label{equ:inflow}
     Inflow_i = es_{i} + \sum_j^n q_{j}
 \end{equation}
@@ -23,12 +28,9 @@ where \hspace{0.6cm} \= $es$ = effective precipitation\\
 \> $inf$ = infiltration\\
 \> $ret$ = surface retention for a given raster cell
 \end{tabbing}
-The sum $\sum_j^n$ indicates that there can be more that one cell
-flowing in cell $i$. The flow direction and therefore the sum $\sum_j^n$
-%% ML: Kubo, ma smysl pridat referenci?
-%% JJ: D8 je citovana, jinak ta suma je postup, ktery jsme zvolili
-%%     v tom modelu a podle me to neni k citovani
-is controlled be D8 flow direction algorithm~\cite{ocallaghan1984}.  Effective
+The sum $\sum_j^n$ in expression~(\ref{equ:inflow}) represents sum of all inflows to the cell $i$. 
+The flow direction and therefore the sum $\sum_j^n$
+is controlled by D8 flow direction algorithm~\cite{ocallaghan1984}.  Effective
 precipitation $es$ is potential precipitation reduced by
 interception of the rainfall water on the vegetation.
 
@@ -68,6 +70,16 @@ The resulting flow is a sum of sheet and rill flow:
 \begin{equation}\label{equ:flow}
     q = q_{rl} + q_{rl}
 \end{equation}
+The sheet flow starts when the infiltration capacity is exceeded; 
+when rainfall is higher than infiltration. The rill flow emerges if 
+a critical water level of sheet flow is exceeded. The critical 
+water level is defined based on critical shear stress; when the 
+drag force of the flowing water becomes large than the cohesive 
+forces of the soil particles.
+From the definition, the sheet flow does not occur all over the 
+basin area. The rill flow is usually presented to even lower extend. 
+However, the CFL criterion is more likely constrained by the 
+rapid rill flow even though its it occupy smaller area compared to sheet flow. 
 
 Infiltration is solved with Phillip's infiltration equation \cite{philip1957theory}:
 \begin{equation}\label{eq:Phillips}
@@ -78,11 +90,9 @@ where \hspace{0.6cm} \= $S$ = sorptivity\\
 \> $K_s$ = hydraulic conductivity
 \end{tabbing}
 
-The reason why the parallelization is considered is the flow
-in~(\ref{equ:flow}). Parameters of
-relations~(\ref{equ:sheetflow})~(\ref{equ:rillflow}) and
-(\ref{eq:Phillips}) may be spatially distributed.
+Parameters of relations~(\ref{equ:sheetflow})~(\ref{equ:rillflow}) and
+(\ref{eq:Phillips}) are in most cases spatially distributed. It is 
+therefore beneficial to incorporate GIS packages in the modeling process. 
 
-%% And the data are
-%% handled by Esri ArcGIS, QGIS and GRASS GIS providers, see
-%% \ref{ref:open_source_providers}.
+
+
