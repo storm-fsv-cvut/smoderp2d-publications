@@ -5,7 +5,8 @@ development has been driven by the Department of Landscape Water
 Conservation at the Czech Technical University in Prague. In 2018
 SMODERP2D developers started working on a new generation of the model
 in order to solve or at least to improve various critical issues of
-the project. This includes most importantly the computation stability
+the project (see SMODERP2D logo in Figure~\ref{fig:smoderp2d_logo}). 
+This includes most importantly the computation stability
 and performance, better interoperability, and lack of
 documentation. Recently SMODERP2D source code has been published on
 GitHub \cite{smoderp2d-github-2019} under GNU GPL licence in order to
@@ -109,10 +110,13 @@ of a polyline stream feature to ensure that its direction will always
 be downslope. Another
 improvement is related to a {\em v.to.db} GRASS module
 \cite{v-to-db-2019}. This tool allows uploading geometry-related
-information into the attribute table. Newly added option {\it
-  next\_edge} allows adding information about the next left and right
-edge. This functionality is important for SMODERP2D in order to
-determine stream network connectivity as
+information into the attribute table. 
+%% JJ: co co jsem do nasledujici vety dopsal nevim jestl je uplne pravda
+Newly added option {\it
+next\_edge} allows adding information about the next left and right
+edge based on the segment orientation determined from surface slope. 
+This functionality is important for SMODERP2D in order to
+determine stream network correct connectivity as
 Figure~\ref{fig:stream_next_edge} shows.
 
 \begin{figure}[ht!]
