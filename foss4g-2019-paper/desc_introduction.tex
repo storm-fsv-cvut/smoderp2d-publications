@@ -5,7 +5,7 @@ Runoff water volume and transported soil amounts
 or discharge time series are being calculated
 in order to design the protection measures sufficient for a given flood 
 or soil transport event. Another example of a practical 
-application of EH models may be land-use change or build up areas development studies 
+application of EH models may be land-use change, build up areas development studies 
 or effect of those on water or soil transport regime. 
 Great use of EH models is also in extreme event 
 forecasting. In research, EH models 
@@ -26,7 +26,7 @@ Physically based models are being developed to overcome the empirical models lim
 Processes taking place in a landscape are spatially distributed, which is the reason why GIS (Geographic Information System)
 is often deploying in the modelling process taking advantage 
 of ready to use GIS features. EH models have similar structure 
-(although each model is specific in the terms in processes solved,
+(although each model is specific in the terms of processes solved,
 its purpose or coding strategy). Runoff and soil loss are initiated by precipitation
 which is, especially for larger areas, spatially distributed process. 
 Majority of models include an infiltration routine with 
@@ -75,13 +75,13 @@ the time step size constraint) it usually occupies a small portion of the area.
 The computation may end up in a situation where a 
 small portion of the computed area demands a shorter time step 
 (due to rill flow presence) whereas the rest of the area allows larger time step. 
-In that case, only a small part of the computed area with developed rills causes the long model run-time. 
+In that case, only a small part of the computed area with developed rills causes a~long model run-time. 
 
 To summarize and outline the objectives of this manuscript. The advantage of high-resolution
 geospatial data availability is constrained with an increasing computation demands
 of a calculation. In the case of this manuscript, the extremely 
 short time steps caused by the needs of CFL criterion is the main concern. 
-Not all computed processes need a shorter time step and processes which do are spatially limited (the concentrated flow in rill). 
+Not all computed processes need a shorter time step and processes which are spatially limited (the concentrated flow in rill). 
 In other words, 
 the whole basin computation run-time is being increased due to a small part
 of the computed basin. One way to overcome this problem is to use 
@@ -91,7 +91,7 @@ Besides the TensorFlow also a CPU-based parallelization is outlined.
 The testing was performed with the SMODERP2D EH model. The model calculates the surface runoff
 and soil loss processes with the use of GIS software for the data pre- and postprocessing. 
 GRASS GIS provider and QGIS plugin were lately implemented in the SMODERP2D project, next to the already existing Esri ArcGIS Toolbox. 
-Those new features and some of the used principles used in the SMODERP2D model are also presented in this manuscript. 
+Those new features and some of the principles used in the SMODERP2D model are also presented in this manuscript. 
 
 % Nevýhoda -  Výpočet je numericky náročný, kuli CFL
 % Procesy jsou rychlé jen v některých buňkách, ostatní části “čekají”
