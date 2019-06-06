@@ -26,6 +26,8 @@ where \hspace{0.6cm} \= $es$ = effective precipitation\\
 The sum $\sum_j^n$ indicates that there can be more that one cell
 flowing in cell $i$. The flow direction and therefore the sum $\sum_j^n$
 %% ML: Kubo, ma smysl pridat referenci?
+%% JJ: D8 je citovana, jinak ta suma je postup, ktery jsme zvolili
+%%     v tom modelu a podle me to neni k citovani
 is controlled be D8 flow direction algorithm~\cite{ocallaghan1984}.  Effective
 precipitation $es$ is potential precipitation reduced by
 interception of the rainfall water on the vegetation.
@@ -39,8 +41,7 @@ criterion~\cite{courant1928}:
 where \hspace{0.6cm} \= $\textrm{d}t$ = time step\\
 \> $\textrm{d}x$ = grid cell size
 \end{tabbing}
-+%% ML: highs?
-If the flow $q$ in the cell highs the model is forced to decrease the
+If the flow $q$ is high, the model is forced to decrease the
 time step in order to satisfy the CFL criterion, since a grid cell size
 is fixed.
 
