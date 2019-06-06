@@ -1,15 +1,15 @@
 \subsection{SMODERP2D model}
-The SMODERP2D model has a simple structure based on mass balance equation:
+The SMODERP2D model has a simple structure based on the mass balance equation:
 \begin{equation}\label{equ:mass_bal}
     \frac{Storage}{\Delta t} = \nonumber  
     Inflow - Outflow
 \end{equation}
 In equation~(\ref{equ:mass_bal}) the Storage is represented by
-surface water level which $h$ [$L$] which changes each proceeding time
+surface water level $h$ [$L$] which changes each proceeding time
 during the computation.
 
 The $Inflow$ and $Outflow$ terms on the right-hand side of
-equation~(\ref{equ:mass_bal}) consist of several components and are
+the equation~(\ref{equ:mass_bal}) consist of several components and are
 defined for each $i_th$ cell in the computation domain:
 \begin{equation}\label{equ:inflow}
     Inflow_i = es_{i} + \sum_j^n q_{j}
@@ -24,13 +24,14 @@ where \hspace{0.6cm} \= $es$ = effective precipitation\\
 \> $ret$ = surface retention for a given raster cell
 \end{tabbing}
 The sum $\sum_j^n$ indicates that there can be more that one cell
-flowing in cell i. The flow direction and therefore the sum $\sum_j^n$
-is controlled be $D8$ flow direction algorithm~\cite{ocallaghan1984}.  Effective
+flowing in cell $i$. The flow direction and therefore the sum $\sum_j^n$
+%% ML: Kubo, ma smysl pridat referenci?
+is controlled be D8 flow direction algorithm~\cite{ocallaghan1984}.  Effective
 precipitation $es$ is potential precipitation reduced by
 interception of the rainfall water on the vegetation.
 
-The model is forced to satisfy the Courant–Friedrichs–Lewy (CFL)
-criteria~\cite{courant1928}:
+The model is forced to satisfy the Courant--Friedrichs--Lewy (CFL)
+criterion~\cite{courant1928}:
 \begin{equation}\label{equ:CFL}
     CFL = \frac{q\textrm{d}t}{\textrm{d}x} < 1.0
 \end{equation}
@@ -38,11 +39,12 @@ criteria~\cite{courant1928}:
 where \hspace{0.6cm} \= $\textrm{d}t$ = time step\\
 \> $\textrm{d}x$ = grid cell size
 \end{tabbing}
++%% ML: highs?
 If the flow $q$ in the cell highs the model is forced to decrease the
-time step in order to satisfy the CFL criteria, since grid cell size
+time step in order to satisfy the CFL criterion, since a grid cell size
 is fixed.
 
-The flow $q$ in equation~(\ref{equ:inflow}) and~(\ref{equ:outflow})
+The flow $q$ in the equations~(\ref{equ:inflow}) and~(\ref{equ:outflow})
 has two components. Slower and spatially extensive sheet flow
 $q_{sh}$:
 \begin{equation}\label{equ:sheetflow}
@@ -52,7 +54,7 @@ $q_{sh}$:
 where \hspace{0.6cm} \= $X,Y,b$ = empirical parameters\\
 \> $I$ = surface slope
 \end{tabbing}
-and faster concentrated rill flow $q_{rl}$ calculated by Mannings formula:
+and faster concentrated rill flow $q_{rl}$ calculated by the Mannings formula:
 \begin{equation}\label{equ:rillflow}
     q_{rl} = A\frac{1}{n} R^{2/3} I^{1/2}
 \end{equation}
@@ -78,6 +80,8 @@ where \hspace{0.6cm} \= $S$ = sorptivity\\
 The reason why the parallelization is considered is the flow
 in~(\ref{equ:flow}). Parameters of
 relations~(\ref{equ:sheetflow})~(\ref{equ:rillflow}) and
-(\ref{eq:Phillips}) may be spatially distributed. And the data are
-handled by Esri ArcGIS, QGIS and GRASS GIS providers, see
-\ref{ref:open_source_providers}.
+(\ref{eq:Phillips}) may be spatially distributed.
+
+%% And the data are
+%% handled by Esri ArcGIS, QGIS and GRASS GIS providers, see
+%% \ref{ref:open_source_providers}.

@@ -14,7 +14,7 @@ and its performance on basic mathematical operations is not always better
 than the one of NumPy (a quick comparison with NumPy and Numba can be
 seen in \cite{tf-np}), it had been preferred for its easy switch
 between CPU and GPU-based core (it depends only on the version of
-TensorFlow the user has installed, no needs for changes in code) and
+TensorFlow the user has installed, no needs for changes in the code) and
 therefore support also for users without an access to machines with
 GPU. Another advantage of TensorFlow is its usage of so-called
 graphs. A graph is a representation of all operations in
@@ -40,27 +40,30 @@ presents the results of different tests made on this version
   \centering
   \caption{Results of parallelization tests}
   \makegapedcells
+  {\small
   \begin{tabular}{|l|p{2.2cm}|c|c|}\hline
     RAM & Processing unit & Data 62 KB & Data 197 MB\\
      & & [s] & [s]\\\hline
-    \multirow{3}{*}{15 GB} & GPU1 & 4.0 & 7 560\\
-    & CPU1 & 0.2 & 12 809\\
-    & CPU2 & 2.1 & 7 249\\\hline
-    \multirow{3}{*}{251 GB} & GPU2 & 2.5 & 6 611\\
-    & CPU3 & 0.2 & 10 637\\
-    & CPU4 & 1.5 & 8 631\\\hline
+    \multirow{3}{*}{15 GB} & GPU1 & 4.0 & 7,560\\
+    & CPU1 & 0.2 & 12,809\\
+    & CPU2 & 2.1 & 7,249\\\hline
+    \multirow{3}{*}{251 GB} & GPU2 & 2.5 & 6,611\\
+    & CPU3 & 0.2 & 10,637\\
+    & CPU4 & 1.5 & 8,631\\\hline
   \end{tabular}
+  \vskip 2em
   \label{tab:GPU_results}
   \caption{Used processing units}
-  \begin{tabular}{|l|p{1.9cm}|c|c|}\hline
+  \begin{tabular}{|l|p{2.5cm}|c|c|}\hline
     ID & Model & Clock speed & Memory\\\hline
-    GPU1 & GeForce GTX 1060 3GB & 33 MHz & 3 016 MiB \\\hline
-    GPU2 & $4\times$ GeForce GTX 1080 Ti & 33 MHz & 11 178 MiB \\\hline
-    CPU1 & AMD Ryzen 7 1700 Eight Core Processor & 1 373 MHz & 512 KB \\\hline
+    GPU1 & GeForce GTX 1060 3GB & 33 MHz & 3,016 MiB \\\hline
+    GPU2 & $4\times$ GeForce GTX 1080 Ti & 33 MHz & 11,178 MiB \\\hline
+    CPU1 & AMD Ryzen 7 1700 Eight Core Processor & 1,373 MHz & 512 KB \\\hline
     CPU2 & $16\times$ AMD Ryzen 7 1700 Eight Core Processor & 1 373 MHz & 512 KB \\\hline
-    CPU3 & Intel Xeon CPU E5-2630 v4 @ 2.20 GHz & 2 423 MHz & 25 600 KB \\\hline
-    CPU4 & $40\times$ Intel Xeon CPU E5-2630 v4 @ 2.20 GHz & 2 423 MHz & 25 600 KB \\\hline
+    CPU3 & Intel Xeon CPU E5-2630 v4 @ 2.20 GHz & 2.4 GHz & 25,600 KB \\\hline
+    CPU4 & $40\times$ Intel Xeon CPU E5-2630 v4 @ 2.20 GHz & 2,423 MHz & 25,600 KB \\\hline
   \end{tabular}
+  }
 \end{table}
 
 As can be seen in the table, the usage of GPUs is not always
@@ -74,7 +77,7 @@ computation time on different architectures). Interesting moment is slower run o
 \subsubsection{Further ideas for a sub-basins based parallel computing}
 Besides the GPU-based parallelization (with TensorFlow \cite{tensorflow2015-whitepaper} or
 NVIDIA Cuda technology~\cite{Kalyanapu2011,Le2015}) the
-pure CPU-parallelization may also bring a good improvement in the computation
+pure CPU parallelization may also bring a good improvement in the computation
 time reduction. The computation domain is separated into sub-domains
 based on a certain algorithm where each sub-domain computation is loaded to a single
 CPU core.  It is beneficial to incorporate the
@@ -91,11 +94,19 @@ was chosen to present the parallelization strategy. At this 0.5 km$^2$ large
 basin a long-term monitoring of erosion and runoff processes is being conducted 
 by the Dept.\ of Landscape Water Conservation. 
 
+\begin{figure}[ht!]
+  \begin{center}
+    \includegraphics[width=0.9\columnwidth]{figures/smoderp-cpu-parallel.png}
+    \caption{Simple example of possible CPU-parallelization strategy for the experimental catchment Nu\v{c}ice}
+    \label{fig:cpu-parallel}
+  \end{center}
+\end{figure}
+
 The strategy main goal is the reduction of
 the communication between CPU-cores during the computation as much as
 possible. The whole basin is divided into several sub-basins based on
 the digital elevation model and user-defined sub-basin size. 
-Outlet\footnote{the location in the basin where all water from the basin flows} 
+Outlet\footnote{The location in the basin where all water from the basin flows} 
 of each sub-basin is depicted with
 red dots in Figure~\ref{fig:cpu-parallel}. After the sub-basins
 are defined, an order in which each sub-basin will be computed is defined as
@@ -104,6 +115,7 @@ basin outlet (depicted by the triangle in Figure~\ref{fig:cpu-parallel})
 and therefore have no inflow flow upslope area are
 calculated at first. Those sub-basins have the rainfall stored in
 hyetographs as the only input. In the simplified setup shown in
+%% ML: Kubo, kdy se pocita sub-basin 5?
 Figure~\ref{fig:cpu-parallel}, the sub-basins 1, 2, 3, and 6 are
 calculated at first in parallel. The calculated hydrographs of the
 sub-basins 1, 2, 3, and 6 are stored in the memory for the later use. 
@@ -116,23 +128,13 @@ calculated all sub-basins towards in the main basin outlet (red triangle in Figu
 where its hydrograph is the desired outcome.
 
 This approach may encounter several limitations. The main one 
-originates from the basin geometry. In case of a narrow  basin a situation 
+originates from the basin geometry. In the case of a narrow  basin a situation 
 where each sub-basin has a single upslope and downslope sub-basin may occur.
 In this case, the sub-basins will be computed in sequence, which
 loses the advantage of multi-core working station. If this situation happens
 the user will be forced to create very small sub-basins in order to be able 
 to perform the outlined CPU-parallelization. The possibilities of CPU-parallelization
 described in this section will be the subject of further research.
-
-
-\begin{figure}[ht!]
-  \begin{center}
-    \includegraphics[width=1.0\columnwidth]{figures/smoderp-cpu-parallel.png}
-    \caption{Simple example of possible CPU-parallelization strategy for the experimental catchment Nučice}
-    \label{fig:cpu-parallel}
-  \end{center}
-\end{figure}
-
 
 
 

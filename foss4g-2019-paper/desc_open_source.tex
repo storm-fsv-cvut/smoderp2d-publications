@@ -1,6 +1,6 @@
 \subsection{SMODERP2D entering an open source world}\label{ref:open_source_providers}
 
-SMODERP2D is a project with a long history. Over the years its
+SMODERP2D is the project with a long history. Over the years its
 development has been driven by the Department of Landscape Water
 Conservation at the Czech Technical University in Prague. In 2018
 SMODERP2D developers started working on a new generation of the model
@@ -32,7 +32,7 @@ attract a wider audience, new developers and users.
                                   \____________________ @ @ @ @  @ @ @
 \end{verbatim}
 }
-\caption{A SMODERP2D project logo}
+\caption{ASCII-art SMODERP2D project logo}
 \label{fig:smoderp2d_logo}
 \end{figure}
 
@@ -46,52 +46,52 @@ classes defining computational steps were re-organized in a
 hierarchical manner. Major design-related changes have been done in
 Python classes responsible for data handling and preparation using GIS
 software tools. Data preparation workflow is handled by a
-newly-defined base, partly abstract Python class ({\tt BaseProvider}
+newly-defined a base, partly abstract Python class ({\tt BaseProvider}
 in Figure~\ref{fig:uml_diagram}). Functionality depending on used
 GIS package has been separated into new classes. This step was crucial
 in order to make data preparation workflow GIS package
 independent. The only supported platform, Esri ArcGIS, has been
 separated from a base workflow. Based on that, a new concept of
-so-called “GIS providers” has been introduced, see
-Figure \ref{fig:uml_diagram}. The key point is the separation of GIS
-functionality related code from the~generic workflow defined by the base
-provider. The base provider depends only on standard builtin Python
-libraries. Array-like computation is performed by a well-known Numpy
-library. Using GIS provider prototypes, the SMODERP2D project can be
-easily extended to support other GIS packages responsible for the
-data preparation phase.
+so-called {\em GIS providers} has been introduced, see
+Figure \ref{fig:uml_diagram}. 
 
 \begin{figure}[ht!]
   \begin{center}
-    \includegraphics[width=1.0\columnwidth]{figures/uml_diagram.pdf}
-    \caption{Concept of GIS providers}
+    \includegraphics[width=0.8\columnwidth]{figures/uml_diagram.pdf}
+    \caption{Concept of GIS providers (software dependecies outlined by stereotypes)}
     \label{fig:uml_diagram}
   \end{center}
 \end{figure}
 
-Currently, the SMODERP2D project comes with three different GIS
-providers. Support for Esri ArcGIS platform is implemented by {\tt
-  ArcGISProvider}, GRASS GIS is handled by {\tt GrassGisProvider}, see
-\ref{sec:grass_provider}. The {\tt CmdProvider} is triggered only when
-model computation is run from a command-line. In this case, it is
-assumed that the data preparation phase has been already performed by one
-of supported GIS platforms.
+The key point is the separation of GIS functionality related code from
+the~generic workflow defined by the base provider. The base provider
+depends only on standard builtin Python libraries. Array-like
+computation is performed by a well-known NumPy library. Using GIS
+provider prototypes, the SMODERP2D project can be easily extended to
+support other GIS packages. Currently, the SMODERP2D project comes
+with three different GIS providers. Support for Esri ArcGIS platform
+is implemented by {\tt ArcGISProvider}, GRASS GIS is handled by {\tt
+  GrassGisProvider}, see \ref{sec:grass_provider}. The {\tt
+  CmdProvider} is triggered only when the model computation is run
+from a command-line. In this case, it is assumed that the data
+preparation phase has been already performed by one of supported GIS
+platforms.
 
-Example of running computation from a command-line. Option {\it
+Example of running computation from a command-line bellow. Option {\it
   --typecomp roff} specifies that only model computation without data
 preparation phase is triggered. It means that data has been already
-prepared and stored in a pickle file distributed by {\it test.ini}
+preprocessed and stored in a pickle file distributed by a {\it test.ini}
 configuration file.
 
 \begin{verbatim}
-./bin/start-smoderp2d.py --typecomp roff \
+python ./bin/start-smoderp2d.py --typecomp roff \
  --indata tests/test.ini
 \end{verbatim}
 
 \subsubsection{GRASS GIS integration}\label{sec:grass_provider}
-Importantly, the new SMODERP2D version extends supported GIS providers
-by a GRASS-based provider. Introducing an open source GIS platform to
-SMODERP2D workflow is crucial from the perspective of
+SMODERP2D supported GIS platforms have been recerently extended by a
++new GRASS-based GIS provider. Introducing an open source GIS platform
+to SMODERP2D workflow is crucial from the perspective of
 interoperability. SMODERP2D users can choose between a proprietary
 Esri ArcGIS platform and an open source GRASS GIS
 \cite{neteler2012grass}. The GRASS GIS provider is designed similarly
@@ -100,14 +100,14 @@ difference, GIS functions are accessed by PyGRASS package
 \cite{ijgi2010201}. Nevertheless, an integration of GRASS tools in the
 SMODERP2D project required a few improvements in GRASS GIS
 itself. That was possible since GRASS GIS is an open source project
-available under GNU GPL licence. These improvements have been
-integrated into main GRASS GIS distribution and will be part of
-upcoming GRASS GIS version 7.8.  GRASS v.to.points module
+distributed under GNU GPL licence. These improvements have been
+integrated into main distribution and will be part of upcoming GRASS
+GIS version 7.8. A GRASS {\em v.to.points} module
 \cite{v-to-points-2019} has been extended to extract from lines start
 or end nodes only. This functionality is used to determine the slope
 of a polyline stream feature to ensure that its direction will always
-be downslope (see Figure~\ref{fig:stream_next_edge}). Another
-improvement has been done in v.to.db GRASS module
+be downslope. Another
+improvement is related to a {\em v.to.db} GRASS module
 \cite{v-to-db-2019}. This tool allows uploading geometry-related
 information into the attribute table. Newly added option {\it
   next\_edge} allows adding information about the next left and right
@@ -125,16 +125,24 @@ Figure~\ref{fig:stream_next_edge} shows.
 
 On the top of GRASS GIS provider a specialized GRASS {\em r.smoderp2d}
 module has been designed. This tool allows a user running SMODERP2D
-model computation directly from GRASS GIS working environment, see
-Figure~\ref{fig:r.smoderp2d}. The module can be easily installed in
-GRASS GIS similarly to other extensions (so-called addons modules) by
-{\em g.extension} command. By default, the {\em r.smoderp2d} module
-performs data preparation phase followed by a model computation. Data
-preparation only can be performed by {\em -d} flag. In this case, the
-module creates a binary pickle file which can be later used for a
-subsequent model computation. Note that ArcGIS Toolbox also allows
-creating a pickle file for later usage. Importantly, such pickle files
-are platform independent.
+model computation directly from GRASS GIS working environment as
++demostrated in Figure~\ref{fig:r.smoderp2d}. The module can be easily
+installed in GRASS GIS similarly to other extensions (so-called addons
+modules) by {\em g.extension} command. By default, the {\em
+  r.smoderp2d} module performs data preparation phase followed by
+model computation steps. Data preparation only can be performed by
+{\em -d} flag. In this case, the module creates a binary pickle file
+which can be later used for a subsequent model computation. Note that
+ArcGIS Toolbox also allows creating a pickle file for later
+usage. Importantly, such pickle files are platform independent.
+
+\begin{figure}[ht!]
+  \begin{center}
+    \includegraphics[width=1.0\columnwidth]{figures/smoderp2d_grass.png}
+    \caption{Running r.smoderp2d module from GRASS GIS graphical user interface}
+    \label{fig:r.smoderp2d}
+  \end{center}
+\end{figure}
 
 {\em r.smoderp2d} command-line usage example:
 \begin{verbatim}
@@ -147,21 +155,13 @@ r.smoderp2d elevation=w001001 soil=soil_map \
  table_stream_shape_code=smoderp stream=stream 
 \end{verbatim}
 
-\begin{figure}[ht!]
-  \begin{center}
-    \includegraphics[width=1.0\columnwidth]{figures/smoderp2d_grass.png}
-    \caption{Running r.smoderp2d module from GRASS graphical user interface}
-    \label{fig:r.smoderp2d}
-  \end{center}
-\end{figure}
-
 \subsubsection{QGIS plugin}
 Recently the SMODERP2D model has been integrated also into QGIS
 environment. QGIS\footnote{https://www.qgis.org} is a widely used open
 source GIS platform which can be easily extended by user-defined
 plugins. A SMODERP2D QGIS plugin allows performing both data
 preparation and model computation phases in QGIS native environment,
-see Figure~\ref{fig:smoderp2_qgis}. Data preparation part is ensured by
+see Figure~\ref{fig:smoderp2_qgis}. Data preprocessing is ensured by
 GRASS GIS provider as described in \ref{sec:grass_provider}. Note that
 QGIS installation normally comes with GRASS GIS included. It means
 that GRASS dependency is solved by QGIS installation
