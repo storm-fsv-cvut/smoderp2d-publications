@@ -2,12 +2,12 @@
 
 SMODERP2D is the project with a long history. Over the years its
 development has been driven by the Department of Landscape Water
-Conservation at the Czech Technical University in Prague. In 2018
-SMODERP2D developers started working on a new generation of the model
-in order to solve or at least to improve various critical issues of
-the project (see SMODERP2D logo in Figure~\ref{fig:smoderp2d_logo}). 
-This includes most importantly the computation stability
-and performance, better interoperability, and lack of
+Conservation at the Czech Technical University in Prague (see
+SMODERP2D logo in Figure~\ref{fig:smoderp2d_logo}). In 2018 SMODERP2D
+developers started working on a new generation of the model in order
+to solve or at least to improve various critical issues of the
+project.  This includes most importantly the computation stability and
+performance, better interoperability, and lack of
 documentation. Recently SMODERP2D source code has been published on
 GitHub \cite{smoderp2d-github-2019} under GNU GPL licence in order to
 attract a wider audience, new developers and users.
@@ -41,18 +41,18 @@ The model is implemented in Python programming language using the
 object-oriented paradigm. The original source code has been designed
 with a low level of scalability, limited readability and
 interoperability. Part of the computation phase responsible for a data
-preparation was restricted to a single platform only, Esri ArcGIS. In
+preprocessing was restricted to the single platform only, Esri ArcGIS. In
 2018 the original source code has been completely refactorized. Python
 classes defining computational steps were re-organized in a
 hierarchical manner. Major design-related changes have been done in
 Python classes responsible for data handling and preparation using GIS
 software tools. Data preparation workflow is handled by a
 newly-defined a base, partly abstract Python class ({\tt BaseProvider}
-in Figure~\ref{fig:uml_diagram}). Functionality depending on used
+in Figure~\ref{fig:uml_diagram}). Functionality depending on the used
 GIS package has been separated into new classes. This step was crucial
 in order to make data preparation workflow GIS package
 independent. The only supported platform, Esri ArcGIS, has been
-separated from a base workflow. Based on that, a new concept of
+separated from the base workflow. Based on that, a new concept of
 so-called {\em GIS providers} has been introduced, see
 Figure \ref{fig:uml_diagram}. 
 
@@ -64,7 +64,7 @@ Figure \ref{fig:uml_diagram}.
   \end{center}
 \end{figure}
 
-The key point is the separation of GIS functionality related code from
+Crucial is the separation of GIS functionality related code from
 the~generic workflow defined by the base provider. The base provider
 depends only on standard builtin Python libraries. Array-like
 computation is performed by a well-known NumPy library. Using GIS
@@ -72,13 +72,13 @@ provider prototypes, the SMODERP2D project can be easily extended to
 support other GIS packages. Currently, the SMODERP2D project comes
 with three different GIS providers. Support for Esri ArcGIS platform
 is implemented by {\tt ArcGISProvider}, GRASS GIS is handled by {\tt
-  GrassGisProvider}, see \ref{sec:grass_provider}. The {\tt
+  GrassGisProvider}, see \ref{sec:grass_provider} for details. The {\tt
   CmdProvider} is triggered only when the model computation is run
-from a command-line. In this case, it is assumed that the data
-preparation phase has been already performed by one of supported GIS
+from a~command-line. In this case, it is assumed that the data
+preparation phase has been already performed by one of the supported GIS
 platforms.
 
-Example of running computation from a command-line bellow. Option {\it
+Example of running computation from a command-line below. Option {\it
   --typecomp roff} specifies that only model computation without data
 preparation phase is triggered. It means that data has been already
 preprocessed and stored in a pickle file distributed by a {\it test.ini}
@@ -91,7 +91,7 @@ python ./bin/start-smoderp2d.py --typecomp roff \
 
 \subsubsection{GRASS GIS integration}\label{sec:grass_provider}
 SMODERP2D supported GIS platforms have been recerently extended by a
-+new GRASS-based GIS provider. Introducing an open source GIS platform
+new GRASS-based GIS provider. Introducing an open source GIS platform
 to SMODERP2D workflow is crucial from the perspective of
 interoperability. SMODERP2D users can choose between a proprietary
 Esri ArcGIS platform and an open source GRASS GIS
@@ -127,16 +127,16 @@ Figure~\ref{fig:stream_next_edge} shows.
   \end{center}
 \end{figure}
 
-On the top of GRASS GIS provider a specialized GRASS {\em r.smoderp2d}
-module has been designed. This tool allows a user running SMODERP2D
+On the top of the GRASS GIS provider a specialized GRASS {\em r.smoderp2d}
+module has been designed. This tool allows the user running SMODERP2D
 model computation directly from GRASS GIS working environment as
-+demostrated in Figure~\ref{fig:r.smoderp2d}. The module can be easily
+demostrated in Figure~\ref{fig:r.smoderp2d}. The module can be easily
 installed in GRASS GIS similarly to other extensions (so-called addons
 modules) by {\em g.extension} command. By default, the {\em
   r.smoderp2d} module performs data preparation phase followed by
 model computation steps. Data preparation only can be performed by
 {\em -d} flag. In this case, the module creates a binary pickle file
-which can be later used for a subsequent model computation. Note that
+which can be later used for a~subsequent model computation. Note that
 ArcGIS Toolbox also allows creating a pickle file for later
 usage. Importantly, such pickle files are platform independent.
 
@@ -186,11 +186,12 @@ SMODERP2D project also comes with Python 3 support, but still
 supporting Python 2. Note that Python versions 2 and 3 are not
 backwards compatible.  Python~3 support is important from various
 perspectives. Python 2 is slowly reaching the end of
-life\footnote{https://legacy.python.org/dev/peps/pep-0373/}, but is still used by many GIS platforms such as Esri ArcGIS 10.x. Newly supported
+life\footnote{https://legacy.python.org/dev/peps/pep-0373/}, but still
+used by many GIS platforms such as Esri ArcGIS 10.x. Newly supported
 GIS platforms by the SMODERP2D project as Esri ArcGIS Pro, (upcoming)
 GRASS GIS 7.8 and QGIS 3.x are Python 3 based. On the other hand it is
 still meaningful to support both Python versions, Python 2 mainly
-because of Esri ArcGIS 10.x platform.
+because of Esri Arc\-GIS 10.x platform.
 
 \begin{figure}[ht!]
   \begin{center}
