@@ -23,10 +23,10 @@ The $Inflow$ and $Outflow$ of $i_{th}$ raster cell are defined as:
     Outflow_i = inf_{i} - q_{i} - ret_i
 \end{equation}
 \begin{tabbing} 
-where \hspace{0.6cm} \= $es$ = effective precipitation\\
-\> $q$ = inflow to resp. outflow from a given raster cell\\
-\> $inf$ = infiltration\\
-\> $ret$ = surface retention for a given raster cell
+where \hspace{0.6cm} \= $es$ = effective precipitation [$LT^{-1}$]\\
+\> $q$ = inflow to resp. outflow from a given raster cell [$LT^{-1}$]\\
+\> $inf$ = infiltration [$LT^{-1}$]\\
+\> $ret$ = surface retention for a given raster cell [$LT^{-1}$]
 \end{tabbing}
 The sum $\sum_j^n$ in expression~(\ref{equ:inflow}) represents sum of all inflows to the cell $i$. 
 The flow direction and therefore the sum $\sum_j^n$
@@ -40,8 +40,8 @@ criterion~\cite{courant1928}:
     CFL = \frac{q\textrm{d}t}{\textrm{d}x} < 1.0
 \end{equation}
 \begin{tabbing} 
-where \hspace{0.6cm} \= $\textrm{d}t$ = time step\\
-\> $\textrm{d}x$ = grid cell size
+where \hspace{0.6cm} \= $\textrm{d}t$ = time step [$T$]\\
+\> $\textrm{d}x$ = grid cell size [$L$]
 \end{tabbing}
 If the flow $q$ is high, the model is forced to decrease the
 time step in order to satisfy the CFL criterion, since a grid cell size
@@ -54,17 +54,17 @@ $q_{sh}$:
     q_{sh} = XI^Yh^b
 \end{equation}
 \begin{tabbing} 
-where \hspace{0.6cm} \= $X,Y,b$ = empirical parameters\\
-\> $I$ = surface slope
+where \hspace{0.6cm} \= $X,Y,b$ = empirical parameters [$-$]\\
+\> $I$ = surface slope [$-$]
 \end{tabbing}
 and faster concentrated rill flow $q_{rl}$ calculated by the Mannings formula:
 \begin{equation}\label{equ:rillflow}
     q_{rl} = A\frac{1}{n} R^{2/3} I^{1/2}
 \end{equation}
 \begin{tabbing} 
-where \hspace{0.6cm} \= $A$ = cross-section area\\
-\> $n$ = roughness in the rill\\
-\> $R$ = hydraulic radii
+where \hspace{0.6cm} \= $A$ = cross-section area [$L^2$]\\
+\> $n$ = roughness in the rill [$TL^{-1/3}$]\\
+\> $R$ = hydraulic radii [$L$]
 \end{tabbing}
 The resulting flow is a sum of sheet and rill flow:
 \begin{equation}\label{equ:flow}
@@ -86,8 +86,8 @@ Infiltration is solved with Phillip's infiltration equation \cite{philip1957theo
     inf = 1/2St^{-1/2} + Ks
 \end{equation}
 \begin{tabbing} 
-where \hspace{0.6cm} \= $S$ = sorptivity\\
-\> $K_s$ = hydraulic conductivity
+where \hspace{0.6cm} \= $S$ = sorptivity [$LT^{1/2}$]\\
+\> $K_s$ = saturated hydraulic conductivity [$LT^{-1}$]
 \end{tabbing}
 
 Parameters of relations~(\ref{equ:sheetflow})~(\ref{equ:rillflow}) and
