@@ -18,7 +18,7 @@ TensorFlow the user has installed, no needs for changes in the code) and
 therefore support also for users without an access to machines with
 GPU. Another advantage of TensorFlow is its usage of so-called
 graphs. A graph is a representation of all operations in
-dataflow/workflow and its individual operations are automatically sent
+dataflow/workflow. Its individual operations are automatically sent
 to multiple cores in a CPU or multiple threads in a GPU. These nodes
 are run independently in parallel.
 
@@ -29,7 +29,7 @@ branch. Because TensorFlow 2.0 is still not suitable with all the
 Python acrobatic tricks, NumPy was used for matrix operations in
 places where TensorFlow could not (on places where loops were still
 needed; looping through a NumPy array is incomparably faster than
-through a Tensor).
+through a~Tensor).
 
 This experimental SMODERP2D branch is still under development;
 however, the alpha-version is ready to be used. Table \ref{tab:GPU_results}
@@ -89,7 +89,7 @@ ghost cell. The strategy aimed to generate as few ghost cells as
 possible; to reduce the communication between the CPU cores. 
 
 The parallelization strategy outlined in the manuscript is based on
-the hydrological reality and it is shown in a simplified setup in Figure~\ref{fig:cpu-parallel}. In this example, the Nu\v{c}ice experimental 
+the hydrological reality and it is shown in a simplified setup in Figure~\ref{fig:cpu-parallel}. In this example, the Nu\v{c}ice experimental catchment
 was chosen to present the parallelization strategy. At this 0.5 km$^2$ large 
 basin a long-term monitoring of erosion and runoff processes is being conducted 
 by the Dept.\ of Landscape Water Conservation. 
@@ -97,7 +97,7 @@ by the Dept.\ of Landscape Water Conservation.
 \begin{figure}[ht!]
   \begin{center}
     \includegraphics[width=0.9\columnwidth]{figures/smoderp-cpu-parallel.png}
-    \caption{Simple example of possible CPU-parallelization strategy for the experimental catchment Nu\v{c}ice}
+    \caption{Simple example of possible CPU-based parallelization strategy for the experimental catchment Nu\v{c}ice}
     \label{fig:cpu-parallel}
   \end{center}
 \end{figure}
@@ -129,11 +129,12 @@ The water input in the final sub-basin 5 are hyetograph and hydrographs
 of sub-basins 2, 4 and 6. Once the main outlet hydrograph is obtained 
 the calculation stores the results and stops. 
 
-This approach may encounter several limitations. The main one 
-originates from the basin geometry. In the case of a narrow  basin a situation 
-where each sub-basin has a single upslope and downslope sub-basin may occur.
-In this case, the sub-basins will be computed in sequence, which
-loses the advantage of multi-core working station. If this situation happens
-the user will be forced to create very small sub-basins in order to be able 
-to perform the outlined CPU-parallelization. The possibilities of CPU-parallelization
-described in this section will be the subject of further research.
+This approach may encounter several limitations. The main one
+originates from the basin geometry. In the case of a narrow basin
+situation (each sub-basin has a single upslope and downslope
+sub-basin), the sub-basins will be computed in a sequence, which loses
+the advantage of multi-core working station. If this situation happens
+the user will be forced to create very small sub-basins in order to be
+able to perform the outlined CPU parallelization. The possibilities of
+CPU parallelization described in this section will be the subject of
+further research.
