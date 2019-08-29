@@ -7,4 +7,5 @@
   [poster-pdf](https://github.com/storm-fsv-cvut/smoderp2d-publications/blob/master/egu-2019-poster/Landa_et_al_egu_2019.pdf))
 
 - foss4g-2019: academic paper to FOSS4G 2019
-  ([manuscript-pdf](https://github.com/storm-fsv-cvut/smoderp2d-publications/blob/master/foss4g-2019-paper/smoderp2d_foss4g_2019.pdf))
+  ([manuscript-pdf](https://github.com/storm-fsv-cvut/smoderp2d-publications/blob/master/foss4g-2019/paper/smoderp2d_foss4g_2019.pdf))
+  ([presentation-pdf](https://github.com/storm-fsv-cvut/smoderp2d-publications/blob/master/foss4g-2019/presentation/smoderp2d_foss4g_2019_presentation.pdf))  
