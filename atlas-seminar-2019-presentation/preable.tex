@@ -1,0 +1,172 @@
+\usetheme[compress]{Singapore}
+% \usetheme{Madrid}
+
+\usepackage[utf8]{inputenc}
+
+\usepackage[czech]{babel}
+% \usepackage[english]{babel}   
+
+\usepackage{ragged2e}
+\usepackage{listings}
+
+\usepackage{changepage}
+
+%\usefonttheme{serif} % default family is serif
+\usefonttheme{default} % default family is serif
+
+\usepackage{csquotes}
+
+\usepackage[backend=bibtex, style=authoryear]{biblatex} 
+
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{color}
+\usetikzlibrary{shadings}
+\definecolor{secinhead}{RGB}{50,90,100}
+% \definecolor{secinheadbg}{RGB}{50,50,100}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,       % false: boxed links; true: colored links
+    linkcolor=secinhead,          % color of internal links (change box color with linkbordercolor)
+    citecolor=green,        % color of links to bibliography
+    filecolor=magenta,      % color of file links
+    urlcolor=cyan,    % color of external links
+}
+\usetikzlibrary{calc}
+
+% define title page
+\defbeamertemplate*{title page}{customized}[1][]
+{
+  \justifying
+  \usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par
+  \bigskip
+  \usebeamerfont{title}\inserttitle\par
+  \bigskip
+  \normalsize\usebeamerfont{author}\insertauthor\par
+  \bigskip
+  \normalsize\usebeamerfont{institute}\insertinstitute\par
+%   \normalsize\usebeamercolor[fg]{titlegraphic}\inserttitlegraphic
+  \vfill\small\usebeamerfont{date}\insertdate\par
+}
+
+\makeatletter
+\def\progressbar@progressbar{} % the progress bar
+\newcount\progressbar@tmpcounta% auxiliary counter
+\newcount\progressbar@tmpcountb% auxiliary counter
+\newdimen\progressbar@pbht %progressbar height
+\newdimen\progressbar@pbwd %progressbar width
+\newdimen\progressbar@tmpdim % auxiliary dimension
+
+\progressbar@pbwd=\paperwidth
+\progressbar@pbht=0.8ex
+
+% the progress bar
+\def\progressbar@progressbar{%
+
+    \progressbar@tmpcounta=\insertframenumber
+    \progressbar@tmpcountb=\inserttotalframenumber
+    \progressbar@tmpdim=\progressbar@pbwd
+    \multiply\progressbar@tmpdim by \progressbar@tmpcounta
+    \divide\progressbar@tmpdim by \progressbar@tmpcountb
+
+  \begin{tikzpicture}%[rounded corners=2pt,very thin]
+
+    \shade[draw=secinhead, top color=secinhead!20,bottom color=secinhead!20]
+      (0pt, 0pt) rectangle ++ (\progressbar@pbwd, \progressbar@pbht);
+
+      \shade[top color=secinhead,bottom color=secinhead] %
+        (0pt, 0pt) rectangle ++ (\progressbar@tmpdim, \progressbar@pbht);
+
+  \end{tikzpicture}%
+}
+
+
+\setbeamercolor{secsubsec}{fg=secinhead,bg=secinhead!20}
+
+% \setbeamertemplate{section in toc}[circle]
+% \setbeamertemplate{section in toc}{\thesection.~\inserttocsection}
+\setbeamertemplate{section in toc}{\inserttocsectionnumber.~\inserttocsection}
+
+\setbeamercolor{itemize item}{fg=secinhead}
+\setbeamercolor{itemize subitem}{fg=secinhead!50}
+\setbeamercolor{section in toc}{fg=secinhead}
+\setbeamercolor{subsection in toc}{fg=secinhead}
+\setbeamercolor{titlelike}{parent=secinhead}
+\setbeamercolor{normal text}{fg=secinhead,bg=white}
+
+\setbeamertemplate{blocks}[rounded][shadow=false]
+\setbeamerfont{block title}{size=\normalsize}
+\setbeamerfont{block body}{size=\normalsize}
+\setbeamercolor{block title}{fg=secinhead,bg=secinhead!20} % Colors of the block titles
+\setbeamercolor{block body}{fg=secinhead,bg=secinhead!10} % Colors of the body of blocks
+
+\setbeamertemplate{headline}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=\paperwidth,ht=1.8em,dp=1.0ex]{secsubsec}%
+    \raggedright
+    \hspace*{2em}%
+    {\normalsize\color{secinhead}\thesection.~\insertsection\hfill\insertsubsection}%
+    \hspace*{2em}%
+  \end{beamercolorbox}%
+  }\vskip-1pt%
+}
+
+\setbeamertemplate{frametitle}{
+  \begin{beamercolorbox}[wd=\paperwidth,ht=1.2em,dp=0.8ex]{secsubsec}%
+%     \hspace*{2em}%
+    \centering
+%     \vspace*{0.0em}%
+    \insertframetitle
+  \end{beamercolorbox}%
+}
+ 
+\setbeamertemplate{footline}{
+    \hbox{%
+    \begin{beamercolorbox}[wd=\paperwidth,ht=0.8ex,dp=0ex]{secsubsec}%
+    \progressbar@progressbar 
+%     \raggedright
+%     \hfill
+%     \vspace*{-0.60em}%
+%     Hydrologický semináø: páteèní setkání
+%     \hspace*{0.0em}%
+  \end{beamercolorbox}%
+  }
+}
+
+\newcommand\jjcite[1]{%
+  \cite{#1}
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{\fontsize{0.5em}{0.1em}\selectfont\fullcite{#1}}%
+  \addtocounter{footnote}{5}%
+  \endgroup
+}
+
+\newcommand\jjcitep[1]{%
+  \parencite{#1}
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{\fontsize{0.5em}{0.1em}\selectfont\fullcite{#1}}%
+  \addtocounter{footnote}{5}%
+  \endgroup
+}
+
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{\fontsize{0.5em}{0.1em}\selectfont#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+% Upravy okraje na slidu
+\newcommand\Wider[2][3em]{%
+\makebox[\linewidth][c]{%
+  \begin{minipage}{\dimexpr\textwidth+#1\relax}
+  \raggedright#2
+  \end{minipage}%
+  }%
+}
+
+% kolek okolo cisla, pouzito v tabulce popisujici toolbox
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=1pt] (char) {{\scriptsize\sffamily#1}};}}

@@ -1,0 +1,58 @@
+% aspectratio 169 1610, 149, 54, 43 and 32.
+\documentclass[9pt,aspectratio=43]{beamer}
+%\documentclass[9pt,aspectratio=43,draft]{beamer}
+
+\include{preable}
+
+\usepackage{array}
+
+\setlength\extrarowheight{5pt}
+\definecolor{bb}{RGB}{50,90,100}
+
+\AtBeginSection[]{
+  \begin{frame}
+  \vfill
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+    \usebeamerfont{title}\insertsectionhead\par%
+  \end{beamercolorbox}
+  \vfill 
+  \end{frame}
+}
+
+\setbeamertemplate{caption}[numbered]{}% Number float-like environments
+
+\usepackage{caption}
+\captionsetup{font=scriptsize,labelfont=scriptsize}
+
+\def\Put(#1,#2)#3{\leavevmode\makebox(0,0){\put(#1,#2){#3}}}
+
+\AtNextBibliography{\tiny} % mala pismena bibliografie 
+
+\newcommand{\light}[1]{\textcolor{gray!50}{#1}} % sedive pismena
+
+\newcommand\Fontvi{\fontsize{9}{10}\selectfont} % zmensi pismena na slidu
+
+\AtBeginSection{}
+
+\begin{document}
+
+    \title{Fyzikální modelování jako nástroj pro stanovení návrhových parametrů TPEO\\[1ex]}  
+    \subtitle{Moderní nástroje pro výpočet smyvu, odtoku a dimenzování prvků protierozní ochrany v rámci pozemkových úprav}
+    \author{Ing. Jakub Jeřábek, Ing. Petr Kavka, Ph.D., Ing. Martin Landa, Ph.D.}
+    \institute{Katedra hydromeliorací a krajinného inženýrství Fakulty stavební ČVUT v Praze}
+
+    \begin{frame}[plain]
+        \titlepage
+    \end{frame} 
+    
+    \input{uvod}
+    \input{proces}
+    \input{smode}
+    \input{pouziti}
+    \input{konec}
+    \input{appendix}
+
+\end{document} 
+
+
