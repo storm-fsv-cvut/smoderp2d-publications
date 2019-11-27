@@ -4,7 +4,6 @@
 *.bbl
 *.log
 *.nav
-*.pdf
 *.snm
 *.tex.backup
 *.toc
