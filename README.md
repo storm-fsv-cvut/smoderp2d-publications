@@ -11,3 +11,5 @@
    [presentation-pdf](https://github.com/storm-fsv-cvut/smoderp2d-publications/blob/master/foss4g-2019/presentation/smoderp2d_foss4g_2019_presentation.pdf))  
 
 - atlas-seminar-2019-presentation: presentation to atlas seminar 2019 (in Czech) ([presentation-pdf](https://github.com/storm-fsv-cvut/smoderp2d-publications/blob/master/atlas-seminar-2019-presentation/prezentace.pdf))
+
+- hygiszp-2020: presentation at conference HyGISZp held online in December 2020 ([presentation-pdf](https://github.com/storm-fsv-cvut/smoderp2d-publications/blob/master/hygiszp-2020/presentation.pdf))
