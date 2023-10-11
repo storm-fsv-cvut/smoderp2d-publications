@@ -1,15 +1,4 @@
 # Publications related to the SMODERP2D project
 
-[SMODERP2D](https://github.com/storm-fsv-cvut/smoderp2d)
-
-- egu-2019-poster: poster to EGU General Assembly 2019
-  ([abstract](https://meetingorganizer.copernicus.org/EGU2019/EGU2019-13921.pdf),
-  [poster-pdf](https://github.com/storm-fsv-cvut/smoderp2d-publications/blob/master/egu-2019-poster/Landa_et_al_egu_2019.pdf))
-
-- foss4g-2019: academic paper to FOSS4G 2019
-  ([manuscript-pdf](https://github.com/storm-fsv-cvut/smoderp2d-publications/blob/master/foss4g-2019/paper/smoderp2d_foss4g_2019.pdf),
-   [presentation-pdf](https://github.com/storm-fsv-cvut/smoderp2d-publications/blob/master/foss4g-2019/presentation/smoderp2d_foss4g_2019_presentation.pdf))  
-
-- atlas-seminar-2019-presentation: presentation to atlas seminar 2019 (in Czech) ([presentation-pdf](https://github.com/storm-fsv-cvut/smoderp2d-publications/blob/master/atlas-seminar-2019-presentation/prezentace.pdf))
-
-- hygiszp-2020: presentation at conference HyGISZp held online in December 2020 ([presentation-pdf](https://github.com/storm-fsv-cvut/smoderp2d-publications/blob/master/hygiszp-2020/presentation.pdf))
+List of presentations (talks), posters and publications (papers)
+related to [SMODERP2D](https://github.com/storm-fsv-cvut/smoderp2d).
